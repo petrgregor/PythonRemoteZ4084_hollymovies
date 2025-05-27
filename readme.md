@@ -1,10 +1,28 @@
 # Projekt Hollymovies
 
 ## Sylabus
-### 27. května 2025
+### Úterý, 27. května · 17:30–21:00
+- Prošli jsme slidy 1-15 
 - Úvod
-- Vytvoření projektu
+- Vytvoření projektu `hollymovies`
 - Vytvoření superuser
+- Vytvoření aplikace `viewer`
+- .env
+- Git repozitář (.gitignore)
+- readme.md
+- Domácí úkol: definovat add2 funkci pro sčítání pomocí kódování URL
+
+### Středa, 28. května · 17:30–21:00
+### Pátek, 30. května · 17:30–21:00
+### Pondělí, 2. června · 17:30–21:00
+### Úterý, 3. června · 17:30–21:00
+### Čtvrtek, 5. června · 17:30–21:00
+### Pátek, 13. června · 17:30–21:00
+### Pondělí, 16. června · 17:30–21:00
+### Středa, 25. června · 17:30–21:00
+### Pondělí, 30. června · 17:30–20:310
+### Úterý, 1. července · 17:30–21:00
+### Čtvrtek, 3. července · 17:30–21:30
 
 ## Django
 ### Instalace
