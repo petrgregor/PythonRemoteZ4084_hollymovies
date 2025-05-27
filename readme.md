@@ -98,3 +98,13 @@ INSTALLED_APPS = [
 ```bash
 python manage.py createsuperuser
 ```
+
+# Práces GITem
+- `master` - hlavní branch (větev) - zde nikdy neprogramujeme, slouží k tzv. release
+- `dev` - hlavní vývojová větev - slouží k rozdělování práce do jednolivých pracovních větví. Ani zde
+neprogramujeme.
+- `feature-branches` - vývojové větve, které vycházejí z `dev`. Pro každou novou funkcionalitu
+vytváříme samostanou vývojovou větev. Zde programujeme danou funkcionalitu, otestujeme a
+až když je plně funkční, provedeme `merge` do větve `dev`. Ve větvi `dev` vše znovu otestuji 
+(mohlo dojít ke konfliktu a mohlo se tedy něco "rozbít"). Pokud je i zde vše funkční, můžeme dát
+`merge` do `master`.
