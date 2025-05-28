@@ -13,6 +13,17 @@
 - Domácí úkol: definovat add2 funkci pro sčítání pomocí kódování URL
 
 ### Středa, 28. května · 17:30–21:00
+- Prošli jsme slidy 16-27
+- ORM
+- Model
+- migrace
+- shell
+- viewer.models.py
+  - Genre
+  - Country
+  - Creator
+- Domácí úkol: definovat model Movie
+
 ### Pátek, 30. května · 17:30–21:00
 ### Pondělí, 2. června · 17:30–21:00
 ### Úterý, 3. června · 17:30–21:00
@@ -172,7 +183,7 @@ python manage.py createsuperuser
 - [ ] Movie
   - [ ] title_orig (String)
   - [ ] title_cz (String)
-  - [ ] genres (n:m -> Genre) # ManyToMany
+  - [ ] genres (n:m -> Genre) # ManyToManyField(Genre, blank=True, related_name='movies')
   - [ ] directors (n:m -> Creator)
   - [ ] actors (n:m -> Creator)
   - [ ] composers (n:m -> Creator)
