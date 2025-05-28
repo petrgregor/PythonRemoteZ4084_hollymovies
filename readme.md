@@ -159,20 +159,20 @@ python manage.py createsuperuser
 ## Databáze
 - [x] Genre
   - [x] name (String)
-- [ ] Country
-  - [ ] name (String) 
-- [ ] Creator
-  - [ ] name (String)
-  - [ ] surname (String)
-  - [ ] artistic_name (String)
-  - [ ] date_of_birth (Date)
-  - [ ] date_of_death (Date)
-  - [ ] country (FK -> Country)
-  - [ ] biography (String)
+- [x] Country
+  - [x] name (String) 
+- [x] Creator
+  - [x] name (String)
+  - [x] surname (String)
+  - [x] artistic_name (String)
+  - [x] date_of_birth (Date)
+  - [x] date_of_death (Date)
+  - [x] country (FK -> Country)
+  - [x] biography (String)
 - [ ] Movie
   - [ ] title_orig (String)
   - [ ] title_cz (String)
-  - [ ] genres (n:m -> Genre)
+  - [ ] genres (n:m -> Genre) # ManyToMany
   - [ ] directors (n:m -> Creator)
   - [ ] actors (n:m -> Creator)
   - [ ] composers (n:m -> Creator)
