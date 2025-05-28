@@ -1,4 +1,4 @@
-# Projekt Hollymovies
+# Backend technologies
 
 ## Sylabus
 ### Úterý, 27. května · 17:30–21:00
@@ -20,7 +20,7 @@
 ### Pátek, 13. června · 17:30–21:00
 ### Pondělí, 16. června · 17:30–21:00
 ### Středa, 25. června · 17:30–21:00
-### Pondělí, 30. června · 17:30–20:310
+### Pondělí, 30. června · 17:30–20:30
 ### Úterý, 1. července · 17:30–21:00
 ### Čtvrtek, 3. července · 17:30–21:30
 
@@ -80,7 +80,7 @@ python manage.py startapp <název_aplikace>
 ```
 
 #### Struktura aplikace
-- `viever` - složka aplikace
+- `viewer` - složka aplikace
   - `migrations` - složka obsahující migrační skripty
   - `__init__.py` - je tu zde jen proto, aby daná složka byla package
   - `admin.py` - nastavení administrační stránky
@@ -116,3 +116,67 @@ INSTALLED_APPS = [
 ```bash
 python manage.py createsuperuser
 ```
+
+# Projekt Hollymovies
+## Funkcionalita
+- [ ] 1 seznam filmů (abecedně)
+- [ ] 2 detail filmu 
+  - [ ] originální název
+  - [ ] český název
+  - [ ] režisér
+  - [ ] herci
+  - [ ] skladatel hudby
+  - [ ] délka
+  - [ ] popis
+  - [ ] rok
+  - [ ] země
+  - [ ] hodnocení
+  - [ ] ocenění
+  - [ ] obrázky
+  - [ ] návštěvnost v kinech (https://kinomaniak.cz/)
+  - [ ] VOD (https://www.kinobox.cz/)
+  - [ ] žánr
+  - [ ] trailer
+  - [ ] kde se odehrává film
+- [ ] 3 filtrování filmů
+  - [ ] podle žánru 
+  - [ ] podle roku
+  - [ ] podle hodnocení
+  - [ ] podle herce
+- [ ] 4 seznam herců
+- [ ] 5 detail herce
+  - [ ] jméno
+  - [ ] příjmení
+  - [ ] umělecké jméno
+  - [ ] filmy, ve kterých hrál
+  - [ ] datum narození
+  - [ ] datum úmrtí
+  - [ ] země
+  - [ ] ocenění
+  - [ ] biografie
+  - [ ] obrázky
+
+## Databáze
+- [x] Genre
+  - [x] name (String)
+- [ ] Country
+  - [ ] name (String) 
+- [ ] Creator
+  - [ ] name (String)
+  - [ ] surname (String)
+  - [ ] artistic_name (String)
+  - [ ] date_of_birth (Date)
+  - [ ] date_of_death (Date)
+  - [ ] country (FK -> Country)
+  - [ ] biography (String)
+- [ ] Movie
+  - [ ] title_orig (String)
+  - [ ] title_cz (String)
+  - [ ] genres (n:m -> Genre)
+  - [ ] directors (n:m -> Creator)
+  - [ ] actors (n:m -> Creator)
+  - [ ] composers (n:m -> Creator)
+  - [ ] length (Integer) (minuty)
+  - [ ] description (String)
+  - [ ] year (Integer)
+  - [ ] countries (n:m -> Country)
