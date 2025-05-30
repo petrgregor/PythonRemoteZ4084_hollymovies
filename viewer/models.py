@@ -1,5 +1,5 @@
 from django.db.models import Model, CharField, DateField, ForeignKey, SET_NULL, \
-    TextField, DateTimeField
+    TextField, DateTimeField, ManyToManyField, IntegerField
 
 
 class Genre(Model):
@@ -50,3 +50,31 @@ class Creator(Model):
         if self.date_of_birth:
             return f"{self.name} {self.surname} ({self.date_of_birth.year})"
         return f"{self.name} {self.surname}"
+
+
+class Movie(Model):
+    title_orig = CharField(max_length=64, null=False, blank=False, unique=False)
+    title_cz = CharField(max_length=64, null=True, blank=True)
+    genres = ManyToManyField(Genre, blank=True, related_name='movies')
+    directors = ManyToManyField(Creator, blank=True, related_name='directing')
+    actors = ManyToManyField(Creator, blank=True, related_name='acting')
+    composers = ManyToManyField(Creator, blank=True, related_name='composing')
+    length = IntegerField(null=True, blank=True)
+    description = TextField(null=True, blank=True)
+    year = IntegerField(null=True, blank=True)
+    countries = ManyToManyField(Country, blank=True, related_name='movies')
+    created = DateTimeField(auto_now_add=True)
+    updated = DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['title_orig', 'year']
+
+    def __repr__(self):
+        if self.year:
+            return f"Movie(title_orig={self.title_orig}, year={self.year})"
+        return f"Movie(title_orig={self.title_orig})"
+
+    def __str__(self):
+        if self.year:
+            return f"{self.title_orig} ({self.year})"
+        return f"{self.title_orig}"

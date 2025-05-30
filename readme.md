@@ -168,6 +168,7 @@ python manage.py createsuperuser
   - [ ] obrázky
 
 ## Databáze
+![ER diagram](./files/ER_diagram_v1.png)
 - [x] Genre
   - [x] name (String)
 - [x] Country
@@ -180,14 +181,17 @@ python manage.py createsuperuser
   - [x] date_of_death (Date)
   - [x] country (FK -> Country)
   - [x] biography (String)
-- [ ] Movie
-  - [ ] title_orig (String)
-  - [ ] title_cz (String)
-  - [ ] genres (n:m -> Genre) # ManyToManyField(Genre, blank=True, related_name='movies')
-  - [ ] directors (n:m -> Creator)
-  - [ ] actors (n:m -> Creator)
-  - [ ] composers (n:m -> Creator)
-  - [ ] length (Integer) (minuty)
-  - [ ] description (String)
-  - [ ] year (Integer)
-  - [ ] countries (n:m -> Country)
+  - [x] acting (n:m -> Movie) - related_name z modelu Movie
+  - [x] directing (n:m -> Movie) - related_name z modelu Movie
+  - [x] composing (n:m -> Movie) - related_name z modelu Movie
+- [x] Movie
+  - [x] title_orig (String)
+  - [x] title_cz (String)
+  - [x] genres (n:m -> Genre) # ManyToManyField(Genre, blank=True, related_name='movies')
+  - [x] directors (n:m -> Creator)
+  - [x] actors (n:m -> Creator)
+  - [x] composers (n:m -> Creator)
+  - [x] length (Integer) (minuty)
+  - [x] description (String)
+  - [x] year (Integer)
+  - [x] countries (n:m -> Country)
