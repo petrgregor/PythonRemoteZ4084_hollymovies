@@ -195,3 +195,21 @@ python manage.py createsuperuser
   - [x] description (String)
   - [x] year (Integer)
   - [x] countries (n:m -> Country)
+
+### DUMP/LOAD databáze
+```bash
+pip install django-dump-load-utf8
+```
+
+Přidáme `'django_dump_load_utf8',` do seznamu nainstalovaných aplikací
+`INSTALLED_APPS` v souboru `settings.py`.
+
+#### DUMP
+```bash
+python manage.py dumpdatautf8 <nazev_aplikace> --output <cesta_k_souboru>
+```
+
+#### LOAD
+```bash
+python manage.py loaddatautf8 <cesta_k_souboru>
+```
