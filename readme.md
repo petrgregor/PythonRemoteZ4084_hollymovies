@@ -25,6 +25,12 @@
 - Domácí úkol: definovat model Movie
 
 ### Pátek, 30. května · 17:30–21:00
+- Prošli jsme slidy 28-36
+- Panel administrátora
+- Vkládání dat přes panel administrátora
+- DUMP/LOAD databáze (v utf8)
+- Dotazy (Queries)
+
 ### Pondělí, 2. června · 17:30–21:00
 ### Úterý, 3. června · 17:30–21:00
 ### Čtvrtek, 5. června · 17:30–21:00
@@ -213,3 +219,123 @@ python manage.py dumpdatautf8 <nazev_aplikace> --output <cesta_k_souboru>
 ```bash
 python manage.py loaddatautf8 <cesta_k_souboru>
 ```
+
+### Dotazy (Queries)
+#### Import modelů
+`from viewer.models import *`
+
+#### .all()
+Vrací kolekci všech nalezených záznamů z tabulky:
+
+`Movie.objects.all()`
+
+#### .get()
+Vrátí jeden nalezený záznam (první, který splňuje podmínku):
+
+`Movie.objects.get(id=1)`
+
+`Genre.objects.get(name='Drama')`
+
+#### .filter()
+Vrací kolekci záznamů, které splňují podmínky:
+
+`Movie.objects.filter(id=1)`
+
+`Movie.objects.filter(title_orig="The Green Mile")`
+
+`Movie.objects.filter(year=1994)`
+
+`Creator.objects.filter(date_of_birth__year=1955)`
+
+`Creator.objects.filter(date_of_birth__year__gt=1955)` -- `__gt` => "větší než" (greater then)
+
+`Creator.objects.filter(date_of_birth__year__gte=1955)` -- `__gte` => "větší rovno" (greater then equal)
+
+`Creator.objects.filter(date_of_birth__year__lt=1955)` -- `__lt` => "menší než" (less then)
+
+`Creator.objects.filter(date_of_birth__year__lte=1955)` -- `__lte` => "menší rovno" (less then equal)
+
+Výpis všech filmů, které mají žánr "Drama":
+
+`drama = Genre.objects.get(name='Drama')`
+
+`Movie.objects.filter(genres=drama)`
+
+nebo:
+
+`Movie.objects.filter(genres=Genre.objects.get(name='Drama'))`
+
+nebo:
+
+`Movie.objects.filter(genres__name='Drama')`
+
+nebo:
+
+`drama = Genre.objects.get(name='Drama')`
+
+`drama.movies.all()`
+
+Herci filmu Forrest Gump:
+
+`movie = Movie.objects.get(title_orig='Forrest Gump')`
+
+`movie.actors.all()`
+
+Všechny filmy, ve kterých hrál Tom Hanks:
+
+`tom = Creator.objects.get(name='Tom', surname='Hanks')`
+
+`tom.acting.all()`
+
+Všichni tvůrci z Francie:
+
+`france = Country.objects.get(name='Francie')`
+
+`france.creators.all()`
+
+Všechny filmy, které obsahují v názvu "Gump":
+
+`Movie.objects.filter(title_orig__contains='Gump')`
+
+Vícenásobné filtry:
+
+`Movie.objects.filter(genres__name='Drama', year=1999)` -- více podmínek, defaultně AND
+
+`Movie.objects.filter(genres__name='Drama').filter(year=1999)` -- metody lze řetězit za sebe
+
+"in":
+
+`Movie.objects.filter(title_orig__in=['Forrest Gump', 'The Green Mile'])`
+
+#### .exclude()
+`Movie.objects.exclude(title_orig__in=['Forrest Gump', 'The Green Mile'])`
+
+#### .exists()
+
+`Movie.objects.filter(year=1994).exists()` -- zda existuje nějaký film z roku 1994
+
+#### .count()
+
+`Movie.objects.filter(year=1994).count()` -- počet filmů z roku 1994
+
+#### .order_by()
+
+`Movie.objects.all()`
+
+`Movie.objects.all().order_by('year')`
+
+`Movie.objects.all().order_by('-year')`
+
+#### Agregační funkce:
+
+`from django.db.models import Avg, Min, Max`
+
+`Movie.objects.aggregate(Avg('length'))` -- průměrná délka filmů
+
+`Movie.objects.aggregate(Avg('length'), Min('length'), Max('length'))`
+
+#### group_by:
+
+`from django.db.models import Count`
+
+`Movie.objects.values('genres').annotate(count=Count('genres'))`
