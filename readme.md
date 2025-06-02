@@ -26,12 +26,21 @@
 
 ### Pátek, 30. května · 17:30–21:00
 - Prošli jsme slidy 28-36
+- viewer.models.py
+  - Movie 
 - Panel administrátora
 - Vkládání dat přes panel administrátora
 - DUMP/LOAD databáze (v utf8)
 - Dotazy (Queries)
 
 ### Pondělí, 2. června · 17:30–21:00
+- Prošli jsme slidy 37-
+- Manipulace s daty
+  - Create - vytvoření
+  - Update - aktualizace
+  - Delete - mazání
+- Templates 
+
 ### Úterý, 3. června · 17:30–21:00
 ### Čtvrtek, 5. června · 17:30–21:00
 ### Pátek, 13. června · 17:30–21:00
@@ -339,3 +348,30 @@ Vícenásobné filtry:
 `from django.db.models import Count`
 
 `Movie.objects.values('genres').annotate(count=Count('genres'))`
+
+### Manipulace s daty
+#### .create:
+
+`Country.objects.create(name="Rakousko")`
+
+nebo:
+
+`italy = Country(name="Itálie")`
+
+`italy.save()`
+
+#### .update()
+
+`Movie.objects.filter(released__year=2000).update(rating=5)`
+
+nebo:
+
+`forrest = Movie.objects.get(title_orig='Forrest Gump')`
+
+`forrest.length = 152`
+
+`forrest.save()`
+
+#### .delete()
+
+`Genre.objects.get(name='Horror').delete()`
