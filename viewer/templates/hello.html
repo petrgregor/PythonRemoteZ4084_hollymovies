@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<h1>Hello, {{ name }}</h1>
+<h2>Welcome to HollyMovies!</h2>
+
+{% for adjective in adjectives %}
+    {% if adjective != 'cruel' %}
+        Hello, {{ adjective }} World! <br>
+    {% endif %}
+{% empty %}
+    Není zde žádný záznam.
+{% endfor %}
+
+</body>
+</html>
