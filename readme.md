@@ -145,7 +145,7 @@ python manage.py createsuperuser
 
 # Projekt Hollymovies
 ## Funkcionalita
-- [ ] 1 seznam filmů (abecedně)
+- [x] 1 seznam filmů (abecedně)
 - [ ] 2 detail filmu 
   - [ ] originální název
   - [ ] český název
