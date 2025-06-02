@@ -34,12 +34,16 @@
 - Dotazy (Queries)
 
 ### Pondělí, 2. června · 17:30–21:00
-- Prošli jsme slidy 37-
+- Prošli jsme slidy 37-50
 - Manipulace s daty
   - Create - vytvoření
   - Update - aktualizace
   - Delete - mazání
 - Templates 
+  - včetně inheritance (dědičnosti)
+  - včetně include (vkládání)
+- Feature 1 - seznam filmů
+- Feature 2 - detail filmu
 
 ### Úterý, 3. června · 17:30–21:00
 ### Čtvrtek, 5. června · 17:30–21:00
@@ -146,22 +150,23 @@ python manage.py createsuperuser
 # Projekt Hollymovies
 ## Funkcionalita
 - [x] 1 seznam filmů (abecedně)
-- [ ] 2 detail filmu 
-  - [ ] originální název
-  - [ ] český název
-  - [ ] režisér
-  - [ ] herci
-  - [ ] skladatel hudby
-  - [ ] délka
-  - [ ] popis
-  - [ ] rok
-  - [ ] země
+- [x] 2 detail filmu 
+  - [x] originální název
+  - [x] český název
+  - [x] žánry
+  - [x] země
+  - [x] režiséři
+  - [x] herci
+  - [x] skladatel hudby
+  - [x] délka
+  - [x] rok
+  - [x] popis
+- [ ] 2.1 další informace o filmu 
   - [ ] hodnocení
   - [ ] ocenění
   - [ ] obrázky
   - [ ] návštěvnost v kinech (https://kinomaniak.cz/)
   - [ ] VOD (https://www.kinobox.cz/)
-  - [ ] žánr
   - [ ] trailer
   - [ ] kde se odehrává film
 - [ ] 3 filtrování filmů

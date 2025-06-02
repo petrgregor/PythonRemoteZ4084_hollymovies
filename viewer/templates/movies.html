@@ -6,9 +6,13 @@
 
 {% block content %}
     <h1>Seznam filmů</h1>
-    {% for movie in movies %}
-        {{ movie }} <br>
-    {% empty %}
-        V databázi není žádný film.
-    {% endfor %}
+    <ul>
+        {% for movie in movies %}
+            <li>
+                <a href="{% url 'movie' movie.id %}">{{ movie }}</a>
+            </li>
+        {% empty %}
+            V databázi není žádný film.
+        {% endfor %}
+    </ul>
 {% endblock %}
