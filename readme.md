@@ -190,7 +190,7 @@ python manage.py createsuperuser
   - [ ] ocenění
   - [ ] obrázky
 - [ ] 6 země 
-  - [ ] 6.1 seznam
+  - [x] 6.1 seznam
   - [ ] 6.2 detail
 - [ ] 7 žánr 
   - [ ] 7.1 seznam

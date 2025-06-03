@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
 
-from viewer.models import Movie, Creator
+from viewer.models import Movie, Creator, Country
 
 
 def home(request):
@@ -41,3 +41,9 @@ class CreatorDetailView(DetailView):
     template_name = 'creator.html'
     model = Creator
     context_object_name = 'creator'
+
+
+class CountriesListView(ListView):
+    template_name = 'countries.html'
+    model = Country
+    context_object_name = 'countries'
