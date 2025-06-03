@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Seznam herců
+{% endblock %}
+
+{% block content %}
+    <h1>Seznam herců</h1>
+    <ul>
+        {% for actor in actors %}
+            <li>
+                {{ actor }}
+            </li>
+        {% empty %}
+            v databázi není žádný herec.
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -25,3 +25,13 @@ class CreatorsListView(ListView):
     template_name = 'creators.html'
     model = Creator
     context_object_name = 'creators'
+
+
+class ActorsView(View):
+    def get(self, request):
+        creators = Creator.objects.all()
+        actors = []
+        for creator in creators:
+            if creator.acting.exists():
+                actors.append(creator)
+        return render(request, 'actors.html', {'actors': actors})

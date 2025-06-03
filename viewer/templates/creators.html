@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+    {% comment %}
     <h1>Seznam tvůrců</h1>
     <ul>
         {% for creator in creators %}
@@ -12,7 +13,47 @@
                 {{ creator }}
             </li>
         {% empty %}
-            v databázi není žádnů tvůrce.
+            V databázi není žádný tvůrce.
+        {% endfor %}
+    </ul>
+    {% endcomment %}
+
+    <h1>Seznam herců</h1>
+    <ul>
+        {% for creator in creators %}
+            {% if creator.acting.all %}
+                <li>
+                    {{ creator }}
+                </li>
+            {% endif %}
+        {% empty %}
+            V databázi není žádný herec.
+        {% endfor %}
+    </ul>
+
+    <h1>Seznam režisérů</h1>
+    <ul>
+        {% for creator in creators %}
+            {% if creator.directing.all %}
+                <li>
+                    {{ creator }}
+                </li>
+            {% endif %}
+        {% empty %}
+            V databázi není žádný režisér.
+        {% endfor %}
+    </ul>
+
+    <h1>Seznam skladatelů</h1>
+    <ul>
+        {% for creator in creators %}
+            {% if creator.composing.all %}
+                <li>
+                    {{ creator }}
+                </li>
+            {% endif %}
+        {% empty %}
+            V databázi není žádný skladatel.
         {% endfor %}
     </ul>
 {% endblock %}
