@@ -36,21 +36,21 @@
         <div class="col-md-6">
             <p><strong>Režie:</strong>
                 {% for director in movie.directors.all %}
-                    {{ director.full_name }}{% if not forloop.last %},{% endif %}
+                    <a href="{% url 'creator' director.id %}">{{ director.full_name }}</a>{% if not forloop.last %},{% endif %}
                 {% empty %}
                     bez režiséra
                 {% endfor %}
             </p>
             <p><strong>Hrají:</strong>
                 {% for actor in movie.actors.all %}
-                    {{ actor.full_name }}{% if not forloop.last %},{% endif %}
+                    <a href="{% url 'creator' actor.id %}">{{ actor.full_name }}</a>{% if not forloop.last %},{% endif %}
                 {% empty %}
                     bez herce
                 {% endfor %}
             </p>
             <p><strong>Hudba:</strong>
                 {% for composer in movie.composers.all %}
-                    {{ composer.full_name }}{% if not forloop.last %},{% endif %}
+                    <a href="{% url 'creator' composer.id %}">{{ composer.full_name }}</a>{% if not forloop.last %},{% endif %}
                 {% empty %}
                     bez hudebníka
                 {% endfor %}

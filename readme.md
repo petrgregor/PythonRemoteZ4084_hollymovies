@@ -175,16 +175,19 @@ python manage.py createsuperuser
   - [ ] podle hodnocení
   - [ ] podle herce
 - [x] 4 seznam herců
-- [ ] 5 detail herce
-  - [ ] jméno
-  - [ ] příjmení
-  - [ ] umělecké jméno
-  - [ ] filmy, ve kterých hrál
-  - [ ] datum narození
-  - [ ] datum úmrtí
-  - [ ] země
+- [x] 5 detail tvůrce
+  - [x] jméno
+  - [x] příjmení
+  - [x] umělecké jméno
+  - [x] země
+  - [x] datum narození
+  - [x] datum úmrtí
+  - [x] filmy, ve kterých hrál
+  - [x] filmy, které režíroval
+  - [x] filmy, které komponoval
+  - [x] biografie
+- [ ] 5.1 další informace o tvůrci 
   - [ ] ocenění
-  - [ ] biografie
   - [ ] obrázky
 
 ## Databáze

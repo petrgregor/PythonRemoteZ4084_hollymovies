@@ -35,3 +35,9 @@ class ActorsView(View):
             if creator.acting.exists():
                 actors.append(creator)
         return render(request, 'actors.html', {'actors': actors})
+
+
+class CreatorDetailView(DetailView):
+    template_name = 'creator.html'
+    model = Creator
+    context_object_name = 'creator'

@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 from viewer.views import home, MoviesListView, MovieDetailView, \
-    CreatorsListView, ActorsView
+    CreatorsListView, ActorsView, CreatorDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +27,6 @@ urlpatterns = [
     path('movies/', MoviesListView.as_view(), name='movies'),
     path('movie/<int:pk>/', MovieDetailView.as_view(), name='movie'),
     path('creators/', CreatorsListView.as_view(), name='creators'),
+    path('creator/<int:pk>/', CreatorDetailView.as_view(), name='creator'),
     path('actors/', ActorsView.as_view(), name='actors'),
 ]

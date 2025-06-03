@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ creator.full_name }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="display-4">{{ creator.full_name }}</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <p><strong>Země:</strong> {{ creator.country }} </p>
+            <p>
+                <strong>Datum narození:</strong>
+                {{ creator.date_of_birth }}
+            </p>
+            {% if creator.date_of_death %}
+                <p>
+                    <strong>Datum úmrtí:</strong>
+                    {{ creator.date_of_death }}
+                </p>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            {% if creator.acting.exists %}
+                <p>
+                    <strong>Herec ve filmech:</strong>
+                    {% for movie in creator.acting.all %}
+                        <a href="{% url 'movie' movie.id %}">{{ movie }}</a>{% if not forloop.last %},{% endif %}
+                    {% comment %}{% empty %}
+                        Nehrál v žádném filmu. {% endcomment %}
+                    {% endfor %}
+                </p>
+            {% endif %}
+            {% if creator.directing.exists %}
+                <p>
+                    <strong>Režisér filmů:</strong>
+                    {% for movie in creator.directing.all %}
+                        <a href="{% url 'movie' movie.id %}">{{ movie }}</a>{% if not forloop.last %},{% endif %}
+                    {% comment %}{% empty %}
+                        Nerežíroval žádný film. {% endcomment %}
+                    {% endfor %}
+                </p>
+            {% endif %}
+            {% if creator.composing.exists %}
+                <p>
+                    <strong>Skladatel:</strong>
+                    {% for movie in creator.composing.all %}
+                        <a href="{% url 'movie' movie.id %}">{{ movie }}</a>{% if not forloop.last %},{% endif %}
+                    {% comment %}{% empty %}
+                        Nesložil hudbu k žádnému filmu. {% endcomment %}
+                    {% endfor %}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+    <p><strong>Biografie:</strong></p>
+    <p class="text-justify">{{ creator.biography }}</p>
+
+    <p class="mt-3">
+        <small class="text-muted">
+            Přidáno do databáze: {{ creator.created }}
+        </small>
+    </p>
+    <p>
+        <small class="text-muted">
+            Poslední úprava: {{ creator.updated }}
+        </small>
+    </p>
+{% endblock %}
