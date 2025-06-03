@@ -189,6 +189,12 @@ python manage.py createsuperuser
 - [ ] 5.1 další informace o tvůrci 
   - [ ] ocenění
   - [ ] obrázky
+- [ ] 6 země 
+  - [ ] 6.1 seznam
+  - [ ] 6.2 detail
+- [ ] 7 žánr 
+  - [ ] 7.1 seznam
+  - [ ] 7.2 detail
 
 ## Databáze
 ![ER diagram](./files/ER_diagram_v1.png)
