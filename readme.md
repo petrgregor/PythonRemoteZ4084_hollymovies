@@ -46,6 +46,17 @@
 - Feature 2 - detail filmu
 
 ### Úterý, 3. června · 17:30–21:00
+- Prošli jsme slidy 51-55
+- Class-based view
+  - View
+  - TemplateView
+  - ListView
+  - DetailView
+- Feature 4 - seznam tvůrců
+- Feature 5 - detail tvůrce
+- Feature 6 - země (seznam + detail)
+- Feature 7 - žánry (seznam + detail)
+
 ### Čtvrtek, 5. června · 17:30–21:00
 ### Pátek, 13. června · 17:30–21:00
 ### Pondělí, 16. června · 17:30–21:00
