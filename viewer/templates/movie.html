@@ -13,7 +13,9 @@
         <div class="col-md-6">
             <p><strong>Žánry:</strong>
                 {% for genre in movie.genres.all %}
-                    <span class="badge badge-secondary">{{ genre }}</span>
+                    <span class="badge badge-secondary">
+                        <a href="{% url 'genre' genre.id %}" class="text-white">{{ genre }}</a>
+                    </span>
                 {% empty %}
                     bez žánru
                 {% endfor %}
