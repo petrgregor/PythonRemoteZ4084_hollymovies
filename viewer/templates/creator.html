@@ -9,7 +9,11 @@
 
     <div class="row">
         <div class="col-md-6">
-            <p><strong>Země:</strong> {{ creator.country }} </p>
+            <p><strong>Země:</strong>
+                <span class="badge badge-secondary">
+                    <a href="{% url 'country' creator.country.id %}" class="text-white">{{ creator.country }}</a>
+                </span>
+            </p>
             <p>
                 <strong>Datum narození:</strong>
                 {{ creator.date_of_birth }}

@@ -20,7 +20,9 @@
             </p>
             <p><strong>Země:</strong>
                 {% for country in movie.countries.all %}
-                    <span class="badge badge-secondary">{{ country }}</span>
+                    <span class="badge badge-secondary">
+                        <a href="{% url 'country' country.id %}" class="text-white">{{ country }}</a>
+                    </span>
                 {% empty %}
                     bez země
                 {% endfor %}

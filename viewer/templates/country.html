@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ country }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="display-4">{{ country }}</h1>
+    <h2>Filmy</h2>
+    <ul>
+        {% for movie in country.movies.all %}
+            <li><a href="{% url 'movie' movie.id %}">{{ movie }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Tvůrci</h2>
+    <ul>
+        {% for creator in country.creators.all %}
+            <li><a href="{% url 'creator' creator.id %}">{{ creator }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

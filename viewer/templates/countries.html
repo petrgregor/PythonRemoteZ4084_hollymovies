@@ -8,7 +8,7 @@
     <h1>Seznam zemí</h1>
     <ul>
         {% for country in countries %}
-            <li>{{ country }}<br>
+            <li><a href="{% url 'country' country.id %}">{{ country }}</a><br>
             Počet filmů: {{ country.movies.count }} <br>
                 <ul>
                     {% for movie in country.movies.all %}

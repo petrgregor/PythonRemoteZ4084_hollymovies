@@ -47,3 +47,9 @@ class CountriesListView(ListView):
     template_name = 'countries.html'
     model = Country
     context_object_name = 'countries'
+
+
+class CountryDetailView(DetailView):
+    template_name = 'country.html'
+    model = Country
+    context_object_name = 'country'

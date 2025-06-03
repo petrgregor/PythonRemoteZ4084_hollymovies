@@ -189,9 +189,9 @@ python manage.py createsuperuser
 - [ ] 5.1 další informace o tvůrci 
   - [ ] ocenění
   - [ ] obrázky
-- [ ] 6 země 
+- [x] 6 země 
   - [x] 6.1 seznam
-  - [ ] 6.2 detail
+  - [x] 6.2 detail
 - [ ] 7 žánr 
   - [ ] 7.1 seznam
   - [ ] 7.2 detail
