@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Seznam žánrů
+{% endblock %}
+
+{% block content %}
+    <h1>Seznam žánrů</h1>
+    <ul>
+        {% for genre in genres %}
+            <li>
+                {{ genre }} ({{ genre.movies.count }})
+                <ul>
+                    {% for movie in genre.movies.all %}
+                        <li><a href="{% url 'movie' movie.id %}">{{ movie }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
