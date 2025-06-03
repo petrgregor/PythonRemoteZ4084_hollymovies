@@ -174,7 +174,7 @@ python manage.py createsuperuser
   - [ ] podle roku
   - [ ] podle hodnocení
   - [ ] podle herce
-- [ ] 4 seznam herců
+- [x] 4 seznam herců
 - [ ] 5 detail herce
   - [ ] jméno
   - [ ] příjmení
