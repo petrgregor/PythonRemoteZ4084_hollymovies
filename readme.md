@@ -58,6 +58,18 @@
 - Feature 7 - žánry (seznam + detail)
 
 ### Čtvrtek, 5. června · 17:30–21:00
+- Prošli jsme slidy 56-80
+- Formuláře
+  - Form
+  - ModelForm
+    - Meta
+    - clean metody
+- Views
+  - FormView
+  - CreateView
+  - UpdateView
+- Features 8 a 9.1+9.2 
+
 ### Pátek, 13. června · 17:30–21:00
 ### Pondělí, 16. června · 17:30–21:00
 ### Středa, 25. června · 17:30–21:00
