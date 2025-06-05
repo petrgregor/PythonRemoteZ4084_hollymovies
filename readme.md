@@ -206,10 +206,10 @@ python manage.py createsuperuser
 - [x] 7 žánr 
   - [x] 7.1 seznam
   - [x] 7.2 detail
-- [ ] 8 Přidávání
+- [x] 8 Přidávání
   - [x] 8.1 Žánr
   - [x] 8.2 Země
-  - [ ] 8.3 Tvůrce
+  - [x] 8.3 Tvůrce
   - [x] 8.4 Film
 - [ ] 9 Editace
   - [ ] 9.1 Žánr

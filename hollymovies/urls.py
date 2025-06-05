@@ -29,6 +29,7 @@ urlpatterns = [
     path('movie/create/', MovieCreateView.as_view(), name='movie_create'),
     path('creators/', CreatorsListView.as_view(), name='creators'),
     path('creator/<int:pk>/', CreatorDetailView.as_view(), name='creator'),
+    path('creator/create/', CreatorCreateView.as_view(), name='creator_create'),
     path('actors/', ActorsView.as_view(), name='actors'),
     path('countries/', CountriesListView.as_view(), name='countries'),
     path('country/<int:pk>/', CountryDetailView.as_view(), name='country'),

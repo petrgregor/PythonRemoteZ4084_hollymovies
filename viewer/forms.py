@@ -1,6 +1,9 @@
+import re
+from datetime import date
+
 from django.core.exceptions import ValidationError
 from django.forms import Form, CharField, ModelChoiceField, IntegerField, \
-    Textarea, ModelForm, TextInput
+    Textarea, ModelForm, TextInput, DateField, NumberInput
 
 from viewer.models import Genre, Creator, Country, Movie
 
@@ -92,3 +95,87 @@ class CountryModelForm(ModelForm):
         initial = self.cleaned_data['name']
         return initial.capitalize()
 
+
+class CreatorModelForm(ModelForm):
+    class Meta:
+        model = Creator
+        #fields = ['name', 'surname', 'artistic_name']
+        #exclude = ['biography']
+        fields = '__all__'
+
+        labels = {
+            'name': 'Jméno',
+            'surname': 'Příjmení',
+            'artistic_name': 'Umělecké jméno',
+            'date_of_birth': 'Datum narození',
+            'date_of_death': 'Datum úmrtí',
+            'country': 'Země',
+            'biography': 'Biografie'
+        }
+
+    date_of_birth = DateField(required=False,
+                              widget=NumberInput(attrs={'type': 'date'}),
+                              label='Datum narození')
+    date_of_death = DateField(required=False,
+                              widget=NumberInput(attrs={'type': 'date'}),
+                              label='Datum úmrtí')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
+
+    def clean_name(self):
+        initial = self.cleaned_data['name']
+        if initial:
+            return initial.capitalize()
+        return initial
+
+    def clean_surname(self):
+        initial = self.cleaned_data['surname']
+        if initial:
+            return initial.capitalize()
+        return initial
+
+    def clean_artistic_name(self):
+        initial = self.cleaned_data['artistic_name']
+        if initial:
+            return initial.capitalize()
+        return initial
+
+    def clean_date_of_birth(self):
+        initial = self.cleaned_data['date_of_birth']
+        if initial and initial > date.today():
+            raise ValidationError('Datum narození nesmí být v budoucnosti.')
+        return initial
+
+    def clean_date_of_death(self):
+        initial = self.cleaned_data['date_of_death']
+        if initial and initial > date.today():
+            raise ValidationError('Datum úmrtí nesmí být v budoucnosti.')
+        return initial
+
+    def clean_biography(self):
+        initial = self.cleaned_data['biography']
+        sentences = re.sub(f'\s*\.\s*', '.', initial).split('.')
+        return '. '.join(sentence.capitalize() for sentence in sentences)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        error_message = ''
+        initial_surname = cleaned_data.get('surname')
+        initial_artistic_name = cleaned_data.get('artistic_name')
+        if not initial_surname and not initial_artistic_name:
+            error_message += 'Je nutné zadat příjmení nebo umělecké jméno (nebo obojí).'
+            #raise ValidationError('Je nutné zadat příjmení nebo umělecké jméno (nebo obojí).')
+
+        initial_date_of_birth = cleaned_data.get('date_of_birth')
+        initial_date_of_death = cleaned_data.get('date_of_death')
+        if initial_date_of_birth and initial_date_of_death and initial_date_of_death <= initial_date_of_birth:
+            error_message += ' Datum úmrtí nesmí být dřív, než datum narození.'
+            #raise ValidationError('Datum úmrtí nesmí být dřív, než datum narození.')
+
+        if error_message:
+            raise ValidationError(error_message)
+
+        return cleaned_data

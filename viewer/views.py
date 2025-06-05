@@ -4,7 +4,8 @@ from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, FormView, \
     CreateView
 
-from viewer.forms import GenreForm, MovieModelForm, CountryModelForm
+from viewer.forms import GenreForm, MovieModelForm, CountryModelForm, \
+    CreatorModelForm
 from viewer.models import Movie, Creator, Country, Genre
 
 
@@ -76,6 +77,16 @@ class CreatorDetailView(DetailView):
     template_name = 'creator.html'
     model = Creator
     context_object_name = 'creator'
+
+
+class CreatorCreateView(CreateView):
+    template_name = 'form.html'
+    form_class = CreatorModelForm
+    success_url = reverse_lazy('creators')
+
+    def form_invalid(self, form):
+        print('Formulář není validní')
+        return super().form_invalid(form)
 
 
 class CountriesListView(ListView):
