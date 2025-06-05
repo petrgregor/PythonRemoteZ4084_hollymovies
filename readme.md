@@ -212,7 +212,7 @@ python manage.py createsuperuser
   - [x] 8.3 Tvůrce
   - [x] 8.4 Film
 - [ ] 9 Editace
-  - [ ] 9.1 Žánr
+  - [x] 9.1 Žánr
   - [ ] 9.2 Země
   - [ ] 9.3 Tvůrce
   - [ ] 9.4 Film

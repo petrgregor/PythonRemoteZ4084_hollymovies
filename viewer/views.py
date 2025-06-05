@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, FormView, \
-    CreateView
+    CreateView, UpdateView
 
 from viewer.forms import GenreForm, MovieModelForm, CountryModelForm, \
-    CreatorModelForm
+    CreatorModelForm, GenreModelForm
 from viewer.models import Movie, Creator, Country, Genre
 
 
@@ -135,6 +135,17 @@ class GenreFormView(FormView):
             name=cleaned_data['name']
         )
         return result
+
+    def form_invalid(self, form):
+        print('Formulář není validní')
+        return super().form_invalid(form)
+
+
+class GenreUpdateView(UpdateView):
+    template_name = 'form.html'
+    form_class = GenreModelForm
+    model = Genre
+    success_url = reverse_lazy('genres')
 
     def form_invalid(self, form):
         print('Formulář není validní')
