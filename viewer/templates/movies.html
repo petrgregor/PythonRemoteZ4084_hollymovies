@@ -6,6 +6,7 @@
 
 {% block content %}
     <h1>Seznam filmů</h1>
+    <a href="{% url 'movie_create' %}" class="btn btn-primary">Přidat film</a>
     <ul>
         {% for movie in movies %}
             <li>

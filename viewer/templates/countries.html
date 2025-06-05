@@ -6,6 +6,7 @@
 
 {% block content %}
     <h1>Seznam zemí</h1>
+    <a href="{% url 'country_create' %}" class="btn btn-primary">Přidat zemi</a>
     <ul>
         {% for country in countries %}
             <li><a href="{% url 'country' country.id %}">{{ country }}</a><br>
