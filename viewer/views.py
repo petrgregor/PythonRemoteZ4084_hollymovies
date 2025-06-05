@@ -111,6 +111,17 @@ class CountryCreateView(CreateView):
         return super().form_invalid(form)
 
 
+class CountryUpdateView(UpdateView):
+    template_name = 'form.html'
+    form_class = CountryModelForm
+    model = Country
+    success_url = reverse_lazy('countries')
+
+    def form_invalid(self, form):
+        print('Formulář není validní')
+        return super().form_invalid(form)
+
+
 class GenresListView(ListView):
     template_name = 'genres.html'
     model = Genre

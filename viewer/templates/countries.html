@@ -9,7 +9,8 @@
     <a href="{% url 'country_create' %}" class="btn btn-primary">Přidat zemi</a>
     <ul>
         {% for country in countries %}
-            <li><a href="{% url 'country' country.id %}">{{ country }}</a><br>
+            <li><a href="{% url 'country' country.id %}">{{ country }}</a>
+                <a href="{% url 'country_update' country.id %}">✏️</a><br>
             Počet filmů: {{ country.movies.count }} <br>
                 <ul>
                     {% for movie in country.movies.all %}
