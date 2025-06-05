@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, FormView
 
+from viewer.forms import GenreForm
 from viewer.models import Movie, Creator, Country, Genre
 
 
@@ -65,3 +67,21 @@ class GenreDetailView(DetailView):
     template_name = 'genre.html'
     model = Genre
     context_object_name = 'genre'
+
+
+class GenreFormView(FormView):
+    template_name = 'form.html'
+    form_class = GenreForm
+    success_url = reverse_lazy('genres')
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        cleaned_data = form.cleaned_data
+        Genre.objects.create(
+            name=cleaned_data['name']
+        )
+        return result
+
+    def form_invalid(self, form):
+        print('Formulář není validní')
+        return super().form_invalid(form)

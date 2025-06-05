@@ -6,6 +6,7 @@
 
 {% block content %}
     <h1>Seznam žánrů</h1>
+    <a href="{% url 'genre_create' %}" class="btn btn-primary">Přidat žánr</a>
     <ul>
         {% for genre in genres %}
             <li>

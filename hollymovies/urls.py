@@ -32,4 +32,5 @@ urlpatterns = [
     path('country/<int:pk>/', CountryDetailView.as_view(), name='country'),
     path('genres/', GenresListView.as_view(), name='genres'),
     path('genre/<int:pk>/', GenreDetailView.as_view(), name='genre'),
+    path('genre/create/', GenreFormView.as_view(), name='genre_create'),
 ]
