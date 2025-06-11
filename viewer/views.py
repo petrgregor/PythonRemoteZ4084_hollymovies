@@ -111,6 +111,12 @@ class CreatorUpdateView(UpdateView):
         return super().form_invalid(form)
 
 
+class CreatorDeleteView(DeleteView):
+    template_name = 'confirm_delete.html'
+    model = Creator
+    success_url = reverse_lazy('creators')
+
+
 class CountriesListView(ListView):
     template_name = 'countries.html'
     model = Country

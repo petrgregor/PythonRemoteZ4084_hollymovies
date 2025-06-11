@@ -234,8 +234,8 @@ python manage.py createsuperuser
   - [x] 9.4 Film
 - [ ] 10 Mazání
   - [x] 10.1 Žánr
-  - [ ] 10.2 Země
-  - [ ] 10.3 Tvůrce
+  - [x] 10.2 Země
+  - [x] 10.3 Tvůrce
   - [ ] 10.4 Film
 
 ## Databáze

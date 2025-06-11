@@ -32,6 +32,7 @@ urlpatterns = [
     path('creator/<int:pk>/', CreatorDetailView.as_view(), name='creator'),
     path('creator/create/', CreatorCreateView.as_view(), name='creator_create'),
     path('creator/update/<int:pk>/', CreatorUpdateView.as_view(), name='creator_update'),
+    path('creator/delete/<int:pk>/', CreatorDeleteView.as_view(), name='creator_delete'),
     path('actors/', ActorsView.as_view(), name='actors'),
     path('countries/', CountriesListView.as_view(), name='countries'),
     path('country/<int:pk>/', CountryDetailView.as_view(), name='country'),

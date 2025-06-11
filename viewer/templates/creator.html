@@ -11,7 +11,9 @@
         <div class="col-md-6">
             <p><strong>Země:</strong>
                 <span class="badge badge-secondary">
-                    <a href="{% url 'country' creator.country.id %}" class="text-white">{{ creator.country }}</a>
+                    {% if creator.country %}
+                        <a href="{% url 'country' creator.country.id %}" class="text-white">{{ creator.country }}</a>
+                    {% endif %}
                 </span>
             </p>
             <p>
@@ -72,4 +74,5 @@
         </small>
     </p>
     <a href="{% url 'creator_update' creator.id %}" class="btn btn-primary">Aktualizovat</a>
+    <a href="{% url 'creator_delete' creator.id %}" class="btn btn-danger">Smazat</a>
 {% endblock %}
