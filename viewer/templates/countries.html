@@ -10,7 +10,9 @@
     <ul>
         {% for country in countries %}
             <li><a href="{% url 'country' country.id %}">{{ country }}</a>
-                <a href="{% url 'country_update' country.id %}">✏️</a><br>
+                <a href="{% url 'country_update' country.id %}">✏️</a>
+                <a href="{% url 'country_delete' country.id %}">❌</a>
+                <br>
             Počet filmů: {{ country.movies.count }} <br>
                 <ul>
                     {% for movie in country.movies.all %}

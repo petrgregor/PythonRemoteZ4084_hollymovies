@@ -37,6 +37,7 @@ urlpatterns = [
     path('country/<int:pk>/', CountryDetailView.as_view(), name='country'),
     path('country/create/', CountryCreateView.as_view(), name='country_create'),
     path('country/update/<int:pk>/', CountryUpdateView.as_view(), name='country_update'),
+    path('country/delete/<int:pk>/', CountryDeleteView.as_view(), name='country_delete'),
     path('genres/', GenresListView.as_view(), name='genres'),
     path('genre/<int:pk>/', GenreDetailView.as_view(), name='genre'),
     path('genre/create/', GenreFormView.as_view(), name='genre_create'),

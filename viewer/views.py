@@ -144,6 +144,12 @@ class CountryUpdateView(UpdateView):
         return super().form_invalid(form)
 
 
+class CountryDeleteView(DeleteView):
+    template_name = 'confirm_delete.html'
+    model = Country
+    success_url = reverse_lazy('countries')
+
+
 class GenresListView(ListView):
     template_name = 'genres.html'
     model = Genre

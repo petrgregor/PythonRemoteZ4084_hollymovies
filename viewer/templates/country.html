@@ -18,4 +18,6 @@
             <li><a href="{% url 'creator' creator.id %}">{{ creator }}</a></li>
         {% endfor %}
     </ul>
+    <a href="{% url 'country_update' country.id %}" class="btn btn-primary">Aktualizovat</a>
+    <a href="{% url 'country_delete' country.id %}" class="btn btn-danger">Smazat</a>
 {% endblock %}
