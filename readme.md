@@ -70,7 +70,9 @@
   - UpdateView
 - Features 8 a 9.1+9.2 
 
-### Pátek, 13. června · 17:30–21:00
+### Středa, 11. června · 17:30–21:00
+- Feature 9.3
+
 ### Pondělí, 16. června · 17:30–21:00
 ### Středa, 25. června · 17:30–21:00
 ### Pondělí, 30. června · 17:30–20:30
@@ -226,7 +228,7 @@ python manage.py createsuperuser
 - [ ] 9 Editace
   - [x] 9.1 Žánr
   - [x] 9.2 Země
-  - [ ] 9.3 Tvůrce
+  - [x] 9.3 Tvůrce
   - [ ] 9.4 Film
 - [ ] 10 Mazání
   - [ ] 10.1 Žánr

@@ -71,4 +71,5 @@
             Poslední úprava: {{ creator.updated }}
         </small>
     </p>
+    <a href="{% url 'creator_update' creator.id %}" class="btn btn-primary">Aktualizovat</a>
 {% endblock %}

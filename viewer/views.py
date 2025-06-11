@@ -89,6 +89,17 @@ class CreatorCreateView(CreateView):
         return super().form_invalid(form)
 
 
+class CreatorUpdateView(UpdateView):
+    template_name = 'form.html'
+    form_class = CreatorModelForm
+    model = Creator
+    success_url = reverse_lazy('creators')
+
+    def form_invalid(self, form):
+        print('Formulář není validní')
+        return super().form_invalid(form)
+
+
 class CountriesListView(ListView):
     template_name = 'countries.html'
     model = Country

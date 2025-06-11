@@ -25,6 +25,7 @@
             {% if creator.acting.all %}
                 <li>
                     <a href="{% url 'creator' creator.id %}">{{ creator }}</a>
+                    <a href="{% url 'creator_update' creator.id %}">✏️</a>
                 </li>
             {% endif %}
         {% empty %}
@@ -38,6 +39,7 @@
             {% if creator.directing.all %}
                 <li>
                     <a href="{% url 'creator' creator.id %}">{{ creator }}</a>
+                    <a href="{% url 'creator_update' creator.id %}">✏️</a>
                 </li>
             {% endif %}
         {% empty %}
@@ -51,6 +53,7 @@
             {% if creator.composing.all %}
                 <li>
                     <a href="{% url 'creator' creator.id %}">{{ creator }}</a>
+                    <a href="{% url 'creator_update' creator.id %}">✏️</a>
                 </li>
             {% endif %}
         {% empty %}
