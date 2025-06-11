@@ -71,6 +71,7 @@
 - Features 8 a 9.1+9.2 
 
 ### Středa, 11. června · 17:30–21:00
+- Prošli jsme slidy 81-106
 - Features 9.3+9.4
 - DeleteView
 - Features 10.1, 10.2, 10.3, 10.4
