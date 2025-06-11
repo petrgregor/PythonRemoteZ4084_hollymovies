@@ -76,6 +76,7 @@
 - Features 10.1, 10.2, 10.3, 10.4
 - Pokročilé šablony
 - Filtry
+- Formuláře
 
 ### Pondělí, 16. června · 17:30–21:00
 ### Středa, 25. června · 17:30–21:00
