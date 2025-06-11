@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Formulář pro film
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="row">
+            <div class="col">
+                <label for="{{ form.title_orig.id_for_label }}">Originální název:</label>
+            </div>
+            <div class="col">
+                <label for="{{ form.title_cz.id_for_label }}">Český název:</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form.title_orig }}
+            </div>
+            <div class="col">
+                {{ form.title_cz }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form.title_orig.errors }}
+            </div>
+            <div class="col">
+                {{ form.title_cz.errors }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="{{ form.directors.id_for_label }}">Režie:</label>
+            </div>
+            <div class="col">
+                <label for="{{ form.actors.id_for_label }}">Hrají:</label>
+            </div>
+            <div class="col">
+                <label for="{{ form.composers.id_for_label }}">Hudba:</label>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col">
+            {{ form.directors }}
+        </div>
+        <div class="col">
+            {{ form.actors }}
+        </div>
+        <div class="col">
+            {{ form.composers }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ form.directors.errors }}
+        </div>
+        <div class="col">
+            {{ form.actors.errors }}
+        </div>
+        <div class="col">
+            {{ form.composers.errors }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label for="{{ form.genres.id_for_label }}">Žánry:</label>
+        </div>
+        <div class="col">
+            <label for="{{ form.countries.id_for_label }}">Země:</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ form.genres }}
+        </div>
+        <div class="col">
+            {{ form.countries }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ form.genres.errors }}
+        </div>
+        <div class="col">
+            {{ form.countries.errors }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label for="{{ form.length.id_for_label }}">Délka:</label>
+        </div>
+        <div class="col">
+            <label for="{{ form.year.id_for_label }}">Rok:</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ form.length }}
+        </div>
+        <div class="col">
+            {{ form.year }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ form.length.errors }}
+        </div>
+        <div class="col">
+            {{ form.year.errors }}
+        </div>
+    </div>
+    <div class="row">
+        <label for="{{ form.description.id_for_label }}">Popis:</label>
+    </div>
+    <div>
+        {{ form.description }}
+    </div>
+    <div>
+        {{ form.description.errors }}
+    </div>
+    <input type="submit" value="Uložit" class="btn btn-primary">
+    </form>
+{% endblock %}

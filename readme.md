@@ -74,6 +74,7 @@
 - Features 9.3+9.4
 - DeleteView
 - Features 10.1, 10.2, 10.3, 10.4
+- Vlastní vzhled formuláře
 
 ### Pondělí, 16. června · 17:30–21:00
 ### Středa, 25. června · 17:30–21:00
