@@ -73,7 +73,7 @@
 ### Středa, 11. června · 17:30–21:00
 - Features 9.3+9.4
 - DeleteView
-- Feature 10.1
+- Features 10.1, 10.2, 10.3, 10.4
 
 ### Pondělí, 16. června · 17:30–21:00
 ### Středa, 25. června · 17:30–21:00
@@ -232,11 +232,11 @@ python manage.py createsuperuser
   - [x] 9.2 Země
   - [x] 9.3 Tvůrce
   - [x] 9.4 Film
-- [ ] 10 Mazání
+- [x] 10 Mazání
   - [x] 10.1 Žánr
   - [x] 10.2 Země
   - [x] 10.3 Tvůrce
-  - [ ] 10.4 Film
+  - [x] 10.4 Film
 
 ## Databáze
 ![ER diagram](./files/ER_diagram_v1.png)
