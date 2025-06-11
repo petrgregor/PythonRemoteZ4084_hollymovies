@@ -18,9 +18,9 @@
             </p>
             <p>
                 <strong>Datum narození:</strong>
-                {{ creator.date_of_birth }}
+                {{ creator.date_of_birth|date:"j. n. Y" }}
             </p>
-            {% if creator.date_of_death %}
+            {% if creator.date_of_death|date:"j. n. Y" %}
                 <p>
                     <strong>Datum úmrtí:</strong>
                     {{ creator.date_of_death }}
@@ -65,12 +65,12 @@
 
     <p class="mt-3">
         <small class="text-muted">
-            Přidáno do databáze: {{ creator.created }}
+            Přidáno do databáze: {{ creator.created|date:"j. n. Y G:i:s" }}
         </small>
     </p>
     <p>
         <small class="text-muted">
-            Poslední úprava: {{ creator.updated }}
+            Poslední úprava: {{ creator.updated|date:"j. n. Y G:i:s" }}
         </small>
     </p>
     <a href="{% url 'creator_update' creator.id %}" class="btn btn-primary">Aktualizovat</a>
