@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Potvrzení smazání
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <p>Opravdu chcete smazat záznam "{{ object }}" z databáze?</p>
+        <input type="submit" value="Smazat" class="btn btn-danger">
+        <input type="button" value="Zpět" class="btn btn-primary" onclick="history.back()">
+    </form>
+{% endblock %}

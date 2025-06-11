@@ -71,7 +71,9 @@
 - Features 8 a 9.1+9.2 
 
 ### Středa, 11. června · 17:30–21:00
-- Feature 9.3
+- Features 9.3+9.4
+- DeleteView
+- Feature 10.1
 
 ### Pondělí, 16. června · 17:30–21:00
 ### Středa, 25. června · 17:30–21:00
@@ -231,7 +233,7 @@ python manage.py createsuperuser
   - [x] 9.3 Tvůrce
   - [x] 9.4 Film
 - [ ] 10 Mazání
-  - [ ] 10.1 Žánr
+  - [x] 10.1 Žánr
   - [ ] 10.2 Země
   - [ ] 10.3 Tvůrce
   - [ ] 10.4 Film

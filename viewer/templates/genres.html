@@ -13,6 +13,7 @@
                 <a href="{% url 'genre' genre.id %}">{{ genre }}</a>
                 ({{ genre.movies.count }})
                 <a href="{% url 'genre_update' genre.id %}">✏️</a>
+                <a href="{% url 'genre_delete' genre.id %}">❌</a>
                 <ul>
                     {% for movie in genre.movies.all %}
                         <li><a href="{% url 'movie' movie.id %}">{{ movie }}</a></li>
