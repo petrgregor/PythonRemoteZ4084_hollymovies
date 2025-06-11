@@ -57,6 +57,17 @@ class MovieCreateView(CreateView):
         return super().form_invalid(form)
 
 
+class MovieUpdateView(UpdateView):
+    template_name = 'form.html'
+    form_class = MovieModelForm
+    model = Movie
+    success_url = reverse_lazy('movies')
+
+    def form_invalid(self, form):
+        print('Formulář není validní')
+        return super().form_invalid(form)
+
+
 class CreatorsListView(ListView):
     template_name = 'creators.html'
     model = Creator

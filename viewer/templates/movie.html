@@ -74,4 +74,6 @@
             Poslední úprava: {{ movie.updated }}
         </small>
     </p>
+
+    <a href="{% url 'movie_update' movie.id %}" class="btn btn-primary">Aktualizovat</a>
 {% endblock %}

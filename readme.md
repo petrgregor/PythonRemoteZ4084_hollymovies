@@ -225,11 +225,11 @@ python manage.py createsuperuser
   - [x] 8.2 Země
   - [x] 8.3 Tvůrce
   - [x] 8.4 Film
-- [ ] 9 Editace
+- [x] 9 Editace
   - [x] 9.1 Žánr
   - [x] 9.2 Země
   - [x] 9.3 Tvůrce
-  - [ ] 9.4 Film
+  - [x] 9.4 Film
 - [ ] 10 Mazání
   - [ ] 10.1 Žánr
   - [ ] 10.2 Země
