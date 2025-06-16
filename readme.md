@@ -243,7 +243,7 @@ python manage.py createsuperuser
   - [x] 10.4 Film
 - [ ] 11 Autentikace
   - [x] 11.1 Zobrazení přihlášeného uživatele
-  - [ ] 11.2 Omezení zobrazení pouze pro přihlášené uživatele
+  - [x] 11.2 Omezení zobrazení pouze pro přihlášené uživatele
   - [ ] 11.3 Omezení zobrazení pouze pro superuživatele
 
 ## Databáze
