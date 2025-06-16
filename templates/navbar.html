@@ -21,7 +21,12 @@
             <div class="navbar-nav ml-auto text-white">
                 <div class="nav-item dropdown">
                     {% if user.is_authenticated %}
-                        {{ user.username }}
+                        <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown">
+                            {{ user.username }}
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{% url 'logout' %}">Odhlásit</a>
+                        </div>
                     {% else %}
                         <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown">
                             Nepřihlášený uživatel
