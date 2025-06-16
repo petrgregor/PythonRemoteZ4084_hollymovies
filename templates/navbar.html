@@ -19,11 +19,18 @@
             </div>
 
             <div class="navbar-nav ml-auto text-white">
-                {% if user.is_authenticated %}
-                    {{ user.username }}
-                {% else %}
-                    Nepřihlášený uživatel
-                {% endif %}
+                <div class="nav-item dropdown">
+                    {% if user.is_authenticated %}
+                        {{ user.username }}
+                    {% else %}
+                        <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown">
+                            Nepřihlášený uživatel
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{% url 'login' %}">Přihlásit</a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

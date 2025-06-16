@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -10,6 +11,7 @@ from viewer.forms import GenreForm, MovieModelForm, CountryModelForm, \
 from viewer.models import Movie, Creator, Country, Genre
 
 
+@login_required
 def home(request):
     return render(request, 'home.html')
 

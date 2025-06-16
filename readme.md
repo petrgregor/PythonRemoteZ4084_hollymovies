@@ -241,10 +241,12 @@ python manage.py createsuperuser
   - [x] 10.2 Země
   - [x] 10.3 Tvůrce
   - [x] 10.4 Film
-- [ ] 11 Autentikace
+- [ ] 11 Autentizace
   - [x] 11.1 Zobrazení přihlášeného uživatele
   - [x] 11.2 Omezení zobrazení pouze pro přihlášené uživatele
   - [ ] 11.3 Omezení zobrazení pouze pro superuživatele
+  - [x] 11.4 Login
+  - [ ] 11.5 Logout, změna hesla, reset hesla, registrace
 
 ## Databáze
 ![ER diagram](./files/ER_diagram_v1.png)
