@@ -15,6 +15,14 @@
                 <a class="nav-item nav-link active" href="{% url 'countries' %}">Země</a>
                 <a class="nav-item nav-link active" href="{% url 'genres' %}">Žánry</a>
             </div>
+
+            <div class="navbar-nav ml-auto text-white">
+                {% if user.is_authenticated %}
+                    {{ user.username }}
+                {% else %}
+                    Nepřihlášený uživatel
+                {% endif %}
+            </div>
         </div>
     </div>
 </nav>

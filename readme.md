@@ -241,6 +241,10 @@ python manage.py createsuperuser
   - [x] 10.2 Země
   - [x] 10.3 Tvůrce
   - [x] 10.4 Film
+- [ ] 11 Autentikace
+  - [x] 11.1 Zobrazení přihlášeného uživatele
+  - [ ] 11.2 Omezení zobrazení pouze pro přihlášené uživatele
+  - [ ] 11.3 Omezení zobrazení pouze pro superuživatele
 
 ## Databáze
 ![ER diagram](./files/ER_diagram_v1.png)
