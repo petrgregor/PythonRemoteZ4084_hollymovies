@@ -80,10 +80,27 @@
 - Formuláře
 
 ### Pondělí, 16. června · 17:30–21:00
+- Prošli jsme slidy 107-136
+- Autentizace
+  - Teorie (hash funkce,...)
+  - Feature 11.1 Zobrazení přihlášeného uživatele
+  - Feature 11.2 Omezení zobrazení pouze pro přihlášené uživatele (LoginRequiredMixin)
+  - Feature 11.3 Login (Přihlášení)
+  - Feature 11.5 Logout (Odhlášení) + Další operace (změna hesla, reset hesla,...)
+  - Aplikace accounts
+  - Feature 11.6 Registrační formulář + Rozšíření uživatelského modelu (Profile)
+
 ### Středa, 25. června · 17:30–21:00
+Plán: Autorizace
+
 ### Pondělí, 30. června · 17:30–20:30
+Plán: Panel správce
+
 ### Úterý, 1. července · 17:30–21:00
+Plán: testování
+
 ### Čtvrtek, 3. července · 17:30–21:30
+Plán: API
 
 ## Django
 ### Instalace
@@ -247,7 +264,7 @@ python manage.py createsuperuser
   - [ ] 11.3 Omezení zobrazení pouze pro superuživatele
   - [x] 11.4 Login
   - [x] 11.5 Logout, změna hesla, reset hesla
-  - [ ] 11.6 registrace
+  - [x] 11.6 registrace + Profile
 
 ## Databáze
 ![ER diagram](./files/ER_diagram_v1.png)

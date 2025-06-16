@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.urls import path, include
 
-from accounts.views import user_logout
+from accounts.views import user_logout, SignUpView
 from viewer.views import *
 
 urlpatterns = [
@@ -55,4 +55,5 @@ urlpatterns = [
          name='password_change'),
     # ostatní defaultní cesty
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/signup/', SignUpView.as_view(), name='signup'),
 ]
