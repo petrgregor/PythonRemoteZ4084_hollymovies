@@ -73,6 +73,10 @@
             Poslední úprava: {{ creator.updated|date:"j. n. Y G:i:s" }}
         </small>
     </p>
-    <a href="{% url 'creator_update' creator.id %}" class="btn btn-primary">Aktualizovat</a>
-    <a href="{% url 'creator_delete' creator.id %}" class="btn btn-danger">Smazat</a>
+    {% if perms.viewer.change_creator %}
+        <a href="{% url 'creator_update' creator.id %}" class="btn btn-primary">Aktualizovat</a>
+    {% endif %}
+    {% if perms.viewer.delete_creator %}
+        <a href="{% url 'creator_delete' creator.id %}" class="btn btn-danger">Smazat</a>
+    {% endif %}
 {% endblock %}
