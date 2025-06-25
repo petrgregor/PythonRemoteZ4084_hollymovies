@@ -91,6 +91,7 @@
   - Feature 11.6 Registrační formulář + Rozšíření uživatelského modelu (Profile)
 
 ### Středa, 25. června · 17:30–21:00
+- Prošli jsme slidy 137-151
 - Autorizace
 - Panel správce
 
