@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from django.forms import Form, CharField, ModelChoiceField, IntegerField, \
     Textarea, ModelForm, TextInput, DateField, NumberInput
 
-from viewer.models import Genre, Creator, Country, Movie
+from viewer.models import Genre, Creator, Country, Movie, Image
 
 
 class GenreForm(Form):
@@ -193,3 +193,9 @@ class CreatorModelForm(ModelForm):
             raise ValidationError(error_message)
 
         return cleaned_data
+
+
+class ImageModelForm(ModelForm):
+    class Meta:
+        model = Image
+        fields = '__all__'

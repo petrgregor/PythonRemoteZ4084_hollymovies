@@ -8,7 +8,7 @@ from django.views.generic import TemplateView, ListView, DetailView, FormView, \
     CreateView, UpdateView, DeleteView
 
 from viewer.forms import GenreForm, MovieModelForm, CountryModelForm, \
-    CreatorModelForm, GenreModelForm
+    CreatorModelForm, GenreModelForm, ImageModelForm
 from viewer.mixins import StaffRequiredMixin
 from viewer.models import Movie, Creator, Country, Genre
 
@@ -218,3 +218,10 @@ class GenreDeleteView(StaffRequiredMixin, DeleteView):
     template_name = 'confirm_delete.html'
     model = Genre
     success_url = reverse_lazy('genres')
+
+
+class ImageCreateView(PermissionRequiredMixin, CreateView):
+    template_name = 'form_image.html'
+    form_class = ImageModelForm
+    success_url = reverse_lazy('home')
+    permission_required = 'viewer.add_image'

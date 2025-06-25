@@ -49,6 +49,7 @@ urlpatterns = [
     path('genre/create/', GenreFormView.as_view(), name='genre_create'),
     path('genre/update/<int:pk>/', GenreUpdateView.as_view(), name='genre_update'),
     path('genre/delete/<int:pk>/', GenreDeleteView.as_view(), name='genre_delete'),
+    path('image/create/', ImageCreateView.as_view(), name='image_create'),
 
     path('accounts/login/', LoginView.as_view(template_name='form.html'), name='login'),
     path('accounts/logout/', user_logout, name='logout'),

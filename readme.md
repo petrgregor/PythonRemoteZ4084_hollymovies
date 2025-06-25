@@ -484,3 +484,6 @@ Do `urls.py` vložíme na konec seznamu:
 
 Do template se obrázek vloží pomocí:
 `<img src="{{ image.image.url }}">`
+
+Pro vkládání obrázků musíme definovat formulář následovně:
+`<form method="post" enctype="multipart/form-data">`
