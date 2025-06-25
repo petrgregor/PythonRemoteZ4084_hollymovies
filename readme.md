@@ -91,16 +91,17 @@
   - Feature 11.6 Registrační formulář + Rozšíření uživatelského modelu (Profile)
 
 ### Středa, 25. června · 17:30–21:00
-Plán: Autorizace
+- Autorizace
+- Panel správce
 
 ### Pondělí, 30. června · 17:30–20:30
-Plán: Panel správce
-
-### Úterý, 1. července · 17:30–21:00
 Plán: testování
 
-### Čtvrtek, 3. července · 17:30–21:30
+### Úterý, 1. července · 17:30–21:00
 Plán: API
+
+### Čtvrtek, 3. července · 17:30–21:30
+Plán: 
 
 ## Django
 ### Instalace

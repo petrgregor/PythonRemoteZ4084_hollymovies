@@ -19,6 +19,44 @@ class MovieAdmin(ModelAdmin):
     search_fields = ['title_orig', 'title_cz']
     actions = ['cleanup_description']
 
+    # FormView
+    fieldsets = [
+        ('Titles',
+         {
+             'fields': [
+                 'title_orig',
+                 'title_cz'
+             ],
+             'description': 'Zde jsou názvy filmu (originální a český).'
+         }),
+        ('External information',
+         {
+             'fields': [
+                 'genres',
+                 'countries',
+                 'year',
+                 'length'
+             ]
+         }),
+        ('Creators',
+         {
+             'fields': [
+                 'directors',
+                 'actors',
+                 'composers'
+             ]
+         }),
+        ('Internal information',
+         {
+             'fields': [
+                 'description',
+                 'created',
+                 'updated'
+             ]
+         })
+    ]
+    readonly_fields = ['created', 'updated']
+
 
 admin.site.register(Country)
 admin.site.register(Creator)
