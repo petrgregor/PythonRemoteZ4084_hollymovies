@@ -6,13 +6,19 @@
 
 {% block content %}
     <h1>Seznam filmů</h1>
-    <a href="{% url 'movie_create' %}" class="btn btn-primary">Přidat film</a>
+    {% if perms.viewer.add_movie %}
+        <a href="{% url 'movie_create' %}" class="btn btn-primary">Přidat film</a>
+    {% endif %}
     <ul>
         {% for movie in movies %}
             <li>
                 <a href="{% url 'movie' movie.id %}">{{ movie }}</a>
-                <a href="{% url 'movie_update' movie.id %}">✏️</a>
-                <a href="{% url 'movie_delete' movie.id %}">❌</a>
+                {% if perms.viewer.change_movie %}
+                    <a href="{% url 'movie_update' movie.id %}">✏️</a>
+                {% endif %}
+                {% if perms.viewer.delete_movie %}
+                    <a href="{% url 'movie_delete' movie.id %}">❌</a>
+                {% endif %}
             </li>
         {% empty %}
             V databázi není žádný film.

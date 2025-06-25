@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, \
+    PermissionRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
@@ -50,31 +51,34 @@ class MovieFormView(FormView):
         return super().form_invalid(form)
 
 
-class MovieCreateView(CreateView):
+class MovieCreateView(PermissionRequiredMixin, CreateView):
     template_name = 'form.html'
     form_class = MovieModelForm
     success_url = reverse_lazy('movies')
+    permission_required = 'viewer.add_movie'
 
     def form_invalid(self, form):
         print('Formulář není validní')
         return super().form_invalid(form)
 
 
-class MovieUpdateView(UpdateView):
+class MovieUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = 'form.html'
     form_class = MovieModelForm
     model = Movie
     success_url = reverse_lazy('movies')
+    permission_required = 'viewer.change_movie'
 
     def form_invalid(self, form):
         print('Formulář není validní')
         return super().form_invalid(form)
 
 
-class MovieDeleteView(DeleteView):
+class MovieDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'confirm_delete.html'
     model = Movie
     success_url = reverse_lazy('movies')
+    permission_required = 'viewer.delete_movie'
 
 
 class CreatorsListView(ListView):
