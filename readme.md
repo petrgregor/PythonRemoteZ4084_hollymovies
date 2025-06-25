@@ -265,11 +265,11 @@ python manage.py createsuperuser
   - [x] 11.4 Login
   - [x] 11.5 Logout, změna hesla, reset hesla
   - [x] 11.6 registrace + Profile
-- [ ] 12 Autorizace
+- [x] 12 Autorizace
   - [x] 12.1 Film
   - [x] 12.2 Tvůrce
-  - [ ] 12.3 Země
-  - [ ] 12.4 Žánr
+  - [x] 12.3 Země
+  - [x] 12.4 Žánr
 
 ## Databáze
 ![ER diagram](./files/ER_diagram_v1.png)

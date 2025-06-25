@@ -9,6 +9,7 @@ from django.views.generic import TemplateView, ListView, DetailView, FormView, \
 
 from viewer.forms import GenreForm, MovieModelForm, CountryModelForm, \
     CreatorModelForm, GenreModelForm
+from viewer.mixins import StaffRequiredMixin
 from viewer.models import Movie, Creator, Country, Genre
 
 
@@ -145,7 +146,7 @@ class CountryDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'country'
 
 
-class CountryCreateView(CreateView):
+class CountryCreateView(StaffRequiredMixin, CreateView):
     template_name = 'form.html'
     form_class = CountryModelForm
     success_url = reverse_lazy('countries')
@@ -155,7 +156,7 @@ class CountryCreateView(CreateView):
         return super().form_invalid(form)
 
 
-class CountryUpdateView(UpdateView):
+class CountryUpdateView(StaffRequiredMixin, UpdateView):
     template_name = 'form.html'
     form_class = CountryModelForm
     model = Country
@@ -166,7 +167,7 @@ class CountryUpdateView(UpdateView):
         return super().form_invalid(form)
 
 
-class CountryDeleteView(DeleteView):
+class CountryDeleteView(StaffRequiredMixin, DeleteView):
     template_name = 'confirm_delete.html'
     model = Country
     success_url = reverse_lazy('countries')
@@ -184,7 +185,7 @@ class GenreDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'genre'
 
 
-class GenreFormView(FormView):
+class GenreFormView(StaffRequiredMixin, FormView):
     template_name = 'form.html'
     form_class = GenreForm
     success_url = reverse_lazy('genres')
@@ -202,7 +203,7 @@ class GenreFormView(FormView):
         return super().form_invalid(form)
 
 
-class GenreUpdateView(UpdateView):
+class GenreUpdateView(StaffRequiredMixin, UpdateView):
     template_name = 'form.html'
     form_class = GenreModelForm
     model = Genre
@@ -213,7 +214,7 @@ class GenreUpdateView(UpdateView):
         return super().form_invalid(form)
 
 
-class GenreDeleteView(DeleteView):
+class GenreDeleteView(StaffRequiredMixin, DeleteView):
     template_name = 'confirm_delete.html'
     model = Genre
     success_url = reverse_lazy('genres')
