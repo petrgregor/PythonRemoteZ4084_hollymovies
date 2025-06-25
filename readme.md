@@ -267,7 +267,7 @@ python manage.py createsuperuser
   - [x] 11.6 registrace + Profile
 - [ ] 12 Autorizace
   - [x] 12.1 Film
-  - [ ] 12.2 Tvůrce
+  - [x] 12.2 Tvůrce
   - [ ] 12.3 Země
   - [ ] 12.4 Žánr
 

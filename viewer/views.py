@@ -103,31 +103,34 @@ class CreatorDetailView(DetailView):
     context_object_name = 'creator'
 
 
-class CreatorCreateView(CreateView):
+class CreatorCreateView(PermissionRequiredMixin, CreateView):
     template_name = 'form.html'
     form_class = CreatorModelForm
     success_url = reverse_lazy('creators')
+    permission_required = 'viewer.add_creator'
 
     def form_invalid(self, form):
         print('Formulář není validní')
         return super().form_invalid(form)
 
 
-class CreatorUpdateView(UpdateView):
+class CreatorUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = 'form.html'
     form_class = CreatorModelForm
     model = Creator
     success_url = reverse_lazy('creators')
+    permission_required = 'viewer.change_creator'
 
     def form_invalid(self, form):
         print('Formulář není validní')
         return super().form_invalid(form)
 
 
-class CreatorDeleteView(DeleteView):
+class CreatorDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'confirm_delete.html'
     model = Creator
     success_url = reverse_lazy('creators')
+    permission_required = 'viewer.delete_creator'
 
 
 class CountriesListView(LoginRequiredMixin, ListView):

@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    <a href="{% url 'creator_create' %}" class="btn btn-primary">Přidat tvůrce</a>
+    {% if perms.viewer.add_creator %}
+        <a href="{% url 'creator_create' %}" class="btn btn-primary">Přidat tvůrce</a>
+    {% endif %}
     {% comment %}
     <h1>Seznam tvůrců</h1>
     <ul>
@@ -25,8 +27,12 @@
             {% if creator.acting.all %}
                 <li>
                     <a href="{% url 'creator' creator.id %}">{{ creator }}</a>
-                    <a href="{% url 'creator_update' creator.id %}">✏️</a>
-                    <a href="{% url 'creator_delete' creator.id %}">❌</a>
+                    {% if perms.viewer.change_creator %}
+                        <a href="{% url 'creator_update' creator.id %}">✏️</a>
+                    {% endif %}
+                    {% if perms.viewer.delete_creator %}
+                        <a href="{% url 'creator_delete' creator.id %}">❌</a>
+                    {% endif %}
                 </li>
             {% endif %}
         {% empty %}
@@ -40,8 +46,12 @@
             {% if creator.directing.all %}
                 <li>
                     <a href="{% url 'creator' creator.id %}">{{ creator }}</a>
-                    <a href="{% url 'creator_update' creator.id %}">✏️</a>
-                    <a href="{% url 'creator_delete' creator.id %}">❌</a>
+                    {% if perms.viewer.change_creator %}
+                        <a href="{% url 'creator_update' creator.id %}">✏️</a>
+                    {% endif %}
+                    {% if perms.viewer.delete_creator %}
+                        <a href="{% url 'creator_delete' creator.id %}">❌</a>
+                    {% endif %}
                 </li>
             {% endif %}
         {% empty %}
@@ -55,8 +65,12 @@
             {% if creator.composing.all %}
                 <li>
                     <a href="{% url 'creator' creator.id %}">{{ creator }}</a>
-                    <a href="{% url 'creator_update' creator.id %}">✏️</a>
-                    <a href="{% url 'creator_delete' creator.id %}">❌</a>
+                    {% if perms.viewer.change_creator %}
+                        <a href="{% url 'creator_update' creator.id %}">✏️</a>
+                    {% endif %}
+                    {% if perms.viewer.delete_creator %}
+                        <a href="{% url 'creator_delete' creator.id %}">❌</a>
+                    {% endif %}
                 </li>
             {% endif %}
         {% empty %}
