@@ -1,5 +1,5 @@
 from django.db.models import Model, CharField, DateField, ForeignKey, SET_NULL, \
-    TextField, DateTimeField, ManyToManyField, IntegerField
+    TextField, DateTimeField, ManyToManyField, IntegerField, ImageField
 
 
 class Genre(Model):
@@ -98,3 +98,15 @@ class Movie(Model):
             minutes = self.length % 60
             return f"{hours}:{minutes:02}"
         return None
+
+
+class Image(Model):
+    image = ImageField(upload_to='images/', default=None, null=False, blank=False)
+    movie = ForeignKey(Movie, on_delete=SET_NULL, null=True, blank=True, related_name='images')
+    description = TextField(null=True, blank=True)
+
+    def __repr__(self):
+        return f"Image(image={self.image})"
+
+    def __str__(self):
+        return f"Image: {self.image}"

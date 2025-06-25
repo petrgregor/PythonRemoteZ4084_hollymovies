@@ -14,11 +14,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.urls import path, include
 
 from accounts.views import user_logout, SignUpView
+from hollymovies import settings
 from viewer.views import *
 
 urlpatterns = [
@@ -56,4 +58,4 @@ urlpatterns = [
     # ostatní defaultní cesty
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', SignUpView.as_view(), name='signup'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

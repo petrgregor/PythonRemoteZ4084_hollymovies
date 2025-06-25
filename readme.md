@@ -213,7 +213,7 @@ python manage.py createsuperuser
 - [ ] 2.1 další informace o filmu 
   - [ ] hodnocení
   - [ ] ocenění
-  - [ ] obrázky
+  - [x] obrázky
   - [ ] návštěvnost v kinech (https://kinomaniak.cz/)
   - [ ] VOD (https://www.kinobox.cz/)
   - [ ] trailer
@@ -465,3 +465,22 @@ nebo:
 #### .delete()
 
 `Genre.objects.get(name='Horror').delete()`
+
+## Obrázky
+Nejprve potřebujeme nainstalovat balík `Pillow`: `pip install Pillow`
+
+V `models.py` můžeme použít `ImageField`.
+
+Provedeme migraci.
+
+Do `settings.py` vložíme cesty k souborům:
+```python
+MEDIA_ROOT = BASE_DIR
+MEDIA_URL = 'images/'
+```
+
+Do `urls.py` vložíme na konec seznamu:
+`+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)`
+
+Do template se obrázek vloží pomocí:
+`<img src="{{ image.image.url }}">`
