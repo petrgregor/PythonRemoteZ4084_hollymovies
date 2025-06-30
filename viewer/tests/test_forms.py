@@ -1,7 +1,9 @@
+import datetime
+
 from django.test import TestCase
 
-from viewer.forms import CreatorModelForm
-from viewer.models import Country
+from viewer.forms import CreatorModelForm, MovieModelForm
+from viewer.models import Country, Genre, Creator
 
 
 class CreatorTestForm(TestCase):
@@ -79,3 +81,98 @@ class CreatorTestForm(TestCase):
             }
         )
         self.assertFalse(creator_form.is_valid())
+
+
+class MovieTestForm(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        genre_drama = Genre.objects.create(name='Drama')
+        genre_comedy = Genre.objects.create(name='Komedie')
+
+        country_cz = Country.objects.create(name='Česko')
+        country_sk = Country.objects.create(name='Slovensko')
+
+        creator1 = Creator.objects.create(
+            name='Arnošt',
+            surname='Novák',
+            date_of_birth=datetime.date(1975, 10, 12),
+            country=country_cz,
+            biography="Režisér několika filmů."
+        )
+
+        creator2 = Creator.objects.create(
+            artistic_name='Umělec',
+            country=country_sk,
+            date_of_birth=datetime.date(2001, 5, 4),
+            biography='Skvělý herec.'
+        )
+        creator3 = Creator.objects.create(
+            surname='Svoboda',
+            country=country_cz,
+            date_of_birth=datetime.date(1940, 4, 16),
+            date_of_death=datetime.date(2021, 10, 10),
+            biography='Legendární herec.'
+        )
+
+    def test_movie_form_is_valid(self):
+        movie_form = MovieModelForm(
+            data={
+                'title_orig': '   originální název   ',
+                'title_cz': '   Český název  ',
+                'genres': ['1', '2'],
+                'directors': ['1'],
+                'actors': ['2', '3'],
+                'length': '125',
+                'description': '  popis filmu  ',
+                'year': '2005',
+                'countries': ['1', '2']
+            }
+        )
+        self.assertTrue(movie_form.is_valid())
+
+    def test_movie_form_title_orig_is_invalid(self):
+        movie_form = MovieModelForm(
+            data={
+                'title_orig': '      ',
+                'title_cz': '   Český název  ',
+                'genres': ['1', '2'],
+                'directors': ['1'],
+                'actors': ['2', '3'],
+                'length': '125',
+                'description': '  popis filmu  ',
+                'year': '2005',
+                'countries': ['1', '2']
+            }
+        )
+        self.assertFalse(movie_form.is_valid())
+
+    def test_movie_form_length_is_invalid(self):
+        movie_form = MovieModelForm(
+            data={
+                'title_orig': '   originální název   ',
+                'title_cz': '   Český název  ',
+                'genres': ['1', '2'],
+                'directors': ['1'],
+                'actors': ['2', '3'],
+                'length': '-123',
+                'description': '  popis filmu  ',
+                'year': '2005',
+                'countries': ['1', '2']
+            }
+        )
+        self.assertFalse(movie_form.is_valid())
+
+        movie_form = MovieModelForm(
+            data={
+                'title_orig': '   originální název   ',
+                'title_cz': '   Český název  ',
+                'genres': ['1', '2'],
+                'directors': ['1'],
+                'actors': ['2', '3'],
+                'length': '0',
+                'description': '  popis filmu  ',
+                'year': '2005',
+                'countries': ['1', '2']
+            }
+        )
+        self.assertFalse(movie_form.is_valid())

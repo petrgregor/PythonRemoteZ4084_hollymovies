@@ -99,9 +99,12 @@
 - Testování
   - Úvod do testování (vzor v `tests.py`)
   - Testování modelů (`test_models.py`)
+  - Testování formulářů (`test_forms.py`) 
 
 ### Úterý, 1. července · 17:30–21:00
-Plán: API
+Plán:
+- Test GUI
+- API
 
 ### Čtvrtek, 3. července · 17:30–21:30
 Plán: 
