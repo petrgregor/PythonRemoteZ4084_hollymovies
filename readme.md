@@ -494,8 +494,6 @@ Pro vkládání obrázků musíme definovat formulář následovně:
 ## Testování
 Každá aplikace obsahuje soubor `tests.py`, do kterého můžeme vkládat testy.
 Testovací soubor lze rodělit do více souborů, každý z těchto souborů začíná `test*`.
-V případě, že máme hodně tesovacích souborů, lze je vložit do složky s názvem
-začínající na `test*`.
 
 Testy spouštíme příkazem `python manage.py test` - spúustí všechny testy.
 
@@ -504,3 +502,7 @@ Lze spustit testy v jednom zadaném souboru příkazem
 
 Běžné testy se provádějí na virtuální databázi, která má stejné schéma, jako naše
 definovanná databáze v `models.py`, ale je prázdná a nezávislá na skutečné databázi.
+
+V případě, že máme hodně testovacích souborů, lze je vložit do složky s názvem
+začínající na `test*`. V tomto případě je potřeba do této složky přidat 
+soubor `__init__.py`, aby složka fungovala jako package.
