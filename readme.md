@@ -96,7 +96,9 @@
 - Panel správce
 
 ### Pondělí, 30. června · 17:30–20:30
-Plán: testování
+- Testování
+  - Úvod do testování (vzor v `tests.py`)
+  - Testování modelů (`test_models.py`)
 
 ### Úterý, 1. července · 17:30–21:00
 Plán: API

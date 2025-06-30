@@ -20,4 +20,5 @@ class ExampleTestClass(TestCase):
     def test_add(self):
         #print("Testovací metoda: test_add")
         result = 4 + 1
+        #print(f"result: {result}")
         self.assertEqual(result, 5)
