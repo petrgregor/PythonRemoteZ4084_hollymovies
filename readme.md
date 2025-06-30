@@ -488,3 +488,17 @@ Do template se obrázek vloží pomocí:
 
 Pro vkládání obrázků musíme definovat formulář následovně:
 `<form method="post" enctype="multipart/form-data">`
+
+## Testování
+Každá aplikace obsahuje soubor `tests.py`, do kterého můžeme vkládat testy.
+Testovací soubor lze rodělit do více souborů, každý z těchto souborů začíná `test*`.
+V případě, že máme hodně tesovacích souborů, lze je vložit do složky s názvem
+začínající na `test*`.
+
+Testy spouštíme příkazem `python manage.py test` - spúustí všechny testy.
+
+Lze spustit testy v jednom zadaném souboru příkazem
+`python manage.py test viewer.tests`.
+
+Běžné testy se provádějí na virtuální databázi, která má stejné schéma, jako naše
+definovanná databáze v `models.py`, ale je prázdná a nezávislá na skutečné databázi.
