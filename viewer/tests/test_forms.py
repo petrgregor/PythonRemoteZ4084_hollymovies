@@ -2,7 +2,7 @@ import datetime
 
 from django.test import TestCase
 
-from viewer.forms import CreatorModelForm, MovieModelForm
+from viewer.forms import CreatorModelForm, MovieModelForm, ReviewModelForm
 from viewer.models import Country, Genre, Creator
 
 
@@ -176,3 +176,48 @@ class MovieTestForm(TestCase):
             }
         )
         self.assertFalse(movie_form.is_valid())
+
+
+class ReviewTestForm(TestCase):
+    def test_form_is_valid_rating_comment(self):
+        form = ReviewModelForm(
+            data={
+                'rating': 9,
+                'comment': 'Skvělý film.'
+            }
+        )
+        self.assertTrue(form.is_valid())
+
+    def test_form_is_valid_rating(self):
+        form = ReviewModelForm(
+            data={
+                'rating': 9
+            }
+        )
+        self.assertTrue(form.is_valid())
+
+    def test_form_is_valid_comment(self):
+        form = ReviewModelForm(
+            data={
+                'comment': 'Skvělý film.'
+            }
+        )
+        self.assertTrue(form.is_valid())
+
+    def test_form_is_invalid(self):
+        form = ReviewModelForm(
+            data={
+                'rating': '',
+                'comment': ''
+            }
+        )
+        self.assertFalse(form.is_valid())
+
+    def test_form_is_invalid_rating_zero(self):
+        form = ReviewModelForm(
+            data={
+                'rating': 0,
+                'comment': ''
+            }
+        )
+        self.assertFalse(form.is_valid())

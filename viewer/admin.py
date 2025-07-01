@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 
-from viewer.models import Genre, Country, Creator, Movie, Image
+from viewer.models import Genre, Country, Creator, Movie, Image, Review
 
 
 class MovieAdmin(ModelAdmin):
@@ -63,3 +63,4 @@ admin.site.register(Creator)
 admin.site.register(Genre)
 admin.site.register(Image)
 admin.site.register(Movie, MovieAdmin)
+admin.site.register(Review)

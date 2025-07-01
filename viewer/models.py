@@ -1,5 +1,7 @@
 from django.db.models import Model, CharField, DateField, ForeignKey, SET_NULL, \
-    TextField, DateTimeField, ManyToManyField, IntegerField, ImageField
+    TextField, DateTimeField, ManyToManyField, IntegerField, ImageField, CASCADE
+
+from accounts.models import Profile
 
 
 class Genre(Model):
@@ -111,3 +113,24 @@ class Image(Model):
 
     def __str__(self):
         return f"Image: {self.image}"
+
+
+class Review(Model):
+    movie = ForeignKey(Movie, on_delete=CASCADE, null=False, blank=False, related_name='reviews')
+    reviewer = ForeignKey(Profile, on_delete=SET_NULL, null=True, blank=False, related_name='reviews')
+    rating = IntegerField(null=True, blank=True)
+    comment = TextField(null=True, blank=True)
+    created = DateTimeField(auto_now_add=True)
+    updated = DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-updated']
+
+    def __repr__(self):
+        return (f"Review(movie={self.movie}, "
+                f"reviewer={self.reviewer}, "
+                f"rating={self.rating}, "
+                f"comment={self.comment[:20]})")
+
+    def __str__(self):
+        return f"{self.reviewer}: {self.movie} ({self.rating})"

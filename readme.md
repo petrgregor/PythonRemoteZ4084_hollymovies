@@ -103,6 +103,7 @@
 
 ### Úterý, 1. července · 17:30–21:00
 - Test GUI
+- Feature 2.1 - hodnocení filmu
 
 ### Čtvrtek, 3. července · 17:30–21:30
 Plán: 
@@ -216,7 +217,7 @@ python manage.py createsuperuser
   - [x] rok
   - [x] popis
 - [ ] 2.1 další informace o filmu 
-  - [ ] hodnocení
+  - [x] hodnocení
   - [ ] ocenění
   - [x] obrázky
   - [ ] návštěvnost v kinech (https://kinomaniak.cz/)

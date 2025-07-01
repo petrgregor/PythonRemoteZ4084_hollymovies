@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from django.forms import Form, CharField, ModelChoiceField, IntegerField, \
     Textarea, ModelForm, TextInput, DateField, NumberInput
 
-from viewer.models import Genre, Creator, Country, Movie, Image
+from viewer.models import Genre, Creator, Country, Movie, Image, Review
 
 
 class GenreForm(Form):
@@ -199,3 +199,27 @@ class ImageModelForm(ModelForm):
     class Meta:
         model = Image
         fields = '__all__'
+
+
+class ReviewModelForm(ModelForm):
+    class Meta:
+        model = Review
+        fields = ['rating', 'comment']
+
+        labels = {
+            'rating': 'Hodnocení',
+            'comment': 'Komentář'
+        }
+
+    rating = IntegerField(min_value=1,
+                          max_value=10,
+                          required=False,
+                          label='Hodnocení')
+
+    def clean(self):
+        cleaned_data = super().clean()
+        rating = cleaned_data.get('rating')
+        comment = cleaned_data.get('comment')
+        if not rating and not comment:
+            raise ValidationError("Je nutné zadat hodnocení nebo komentář (nebo oboje).")
+

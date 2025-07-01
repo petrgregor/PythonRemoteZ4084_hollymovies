@@ -1,16 +1,17 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, \
     PermissionRequiredMixin
-from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, FormView, \
     CreateView, UpdateView, DeleteView
 
+from accounts.models import Profile
 from viewer.forms import GenreForm, MovieModelForm, CountryModelForm, \
-    CreatorModelForm, GenreModelForm, ImageModelForm
+    CreatorModelForm, GenreModelForm, ImageModelForm, ReviewModelForm
 from viewer.mixins import StaffRequiredMixin
-from viewer.models import Movie, Creator, Country, Genre
+from viewer.models import Movie, Creator, Country, Genre, Review
 
 
 @login_required
@@ -28,6 +29,38 @@ class MovieDetailView(DetailView):
     template_name = 'movie.html'
     model = Movie
     context_object_name = 'movie'
+
+    def get_context_data(self, **kwargs):
+        context = super(MovieDetailView, self).get_context_data(**kwargs)
+        context['review_form'] = ReviewModelForm
+        return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = ReviewModelForm(request.POST)
+
+        if form.is_valid():
+            rating = form.cleaned_data['rating']
+            comment = form.cleaned_data['comment']
+            profile = Profile.objects.get(user=request.user)
+
+            if Review.objects.filter(movie=self.object, reviewer=profile).exists():
+                review = Review.objects.get(movie=self.object, reviewer=profile)
+                review.rating = rating
+                review.comment = comment
+                review.save()
+            else:
+                Review.objects.create(
+                    movie=self.object,
+                    reviewer=profile,
+                    rating=rating,
+                    comment=comment
+                )
+
+            return redirect(reverse('movie', kwargs={'pk': self.object.pk}))
+
+        return redirect('movies')
+
 
 
 class MovieFormView(FormView):
@@ -225,3 +258,9 @@ class ImageCreateView(PermissionRequiredMixin, CreateView):
     form_class = ImageModelForm
     success_url = reverse_lazy('home')
     permission_required = 'viewer.add_image'
+
+
+class ReviewDeleteView(DeleteView):
+    template_name = 'confirm_delete.html'
+    model = Review
+    success_url = reverse_lazy('movies')

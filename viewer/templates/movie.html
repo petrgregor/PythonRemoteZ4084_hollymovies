@@ -91,4 +91,35 @@
     {% if perms.viewer.delete_movie %}
         <a href="{% url 'movie_delete' movie.id %}" class="btn btn-danger">Smazat</a>
     {% endif %}
+
+    {% if request.user.is_authenticated %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <table>{{ review_form.as_table }}</table>
+            <button type="submit">Odeslat</button>
+        </form>
+    {% endif %}
+
+    <hr>
+    {% for review in movie.reviews.all %}
+        <div class="bg-light rounded mt-2 p-2 position-relative">
+            <span>Uživatel: {{ review.reviewer }}</span>
+            <span class="font-italic">{{ review.created|date:'d. m. Y H:i' }}</span>
+            {% if review.created != review.updated %}
+                <span class="font-italic">(upraveno: {{ review.updated|date:'d. m. Y H:i' }})</span>
+            {% endif %}
+            {% if request.user == review.reviewer.user %}
+                <a href="{% url 'review_delete' review.id %}">Smazat</a>
+            {% endif %}
+            <div>
+                Hodnocení: {{ review.rating }}
+            </div>
+            <div>
+                Komentář: {{ review.comment }}
+            </div>
+        </div>
+    {% empty %}
+        Zatím nikdo nehodnotil tento film.
+    {% endfor %}
+
 {% endblock %}
