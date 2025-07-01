@@ -104,6 +104,12 @@
 ### Úterý, 1. července · 17:30–21:00
 - Test GUI
 - Feature 2.1 - hodnocení filmu
+- Feature 5.1 - obrázky u tvůrců
+- Domácí úkol
+  - seznam všech obrázků
+  - zobrazení detailu obrázku
+  - editace obrázku
+  - mazání obrázku
 
 ### Čtvrtek, 3. července · 17:30–21:30
 Plán: 
@@ -243,7 +249,7 @@ python manage.py createsuperuser
   - [x] biografie
 - [ ] 5.1 další informace o tvůrci 
   - [ ] ocenění
-  - [ ] obrázky
+  - [x] obrázky
 - [x] 6 země 
   - [x] 6.1 seznam
   - [x] 6.2 detail
