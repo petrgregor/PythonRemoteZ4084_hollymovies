@@ -102,12 +102,11 @@
   - Testování formulářů (`test_forms.py`) 
 
 ### Úterý, 1. července · 17:30–21:00
-Plán:
 - Test GUI
-- API
 
 ### Čtvrtek, 3. července · 17:30–21:30
 Plán: 
+- API
 
 ## Django
 ### Instalace
@@ -509,3 +508,12 @@ definovanná databáze v `models.py`, ale je prázdná a nezávislá na skutečn
 V případě, že máme hodně testovacích souborů, lze je vložit do složky s názvem
 začínající na `test*`. V tomto případě je potřeba do této složky přidat 
 soubor `__init__.py`, aby složka fungovala jako package.
+
+### Testování GUI
+Pro testování GUI potřebujeme nainstalovat `selenium` (pro práci s webovou stránkou):
+`pip install selenium`.
+
+Během testování musí být spuštěný server.
+
+> [!WARNING]
+> Zde již pracujeme s reálnou databází a tedy i s reálnými daty.
