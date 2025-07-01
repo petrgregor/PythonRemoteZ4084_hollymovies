@@ -96,13 +96,17 @@
 - Panel správce
 
 ### Pondělí, 30. června · 17:30–20:30
-Plán: testování
+- Testování
+  - Úvod do testování (vzor v `tests.py`)
+  - Testování modelů (`test_models.py`)
+  - Testování formulářů (`test_forms.py`) 
 
 ### Úterý, 1. července · 17:30–21:00
-Plán: API
+- Test GUI
 
 ### Čtvrtek, 3. července · 17:30–21:30
 Plán: 
+- API
 
 ## Django
 ### Instalace
@@ -488,3 +492,28 @@ Do template se obrázek vloží pomocí:
 
 Pro vkládání obrázků musíme definovat formulář následovně:
 `<form method="post" enctype="multipart/form-data">`
+
+## Testování
+Každá aplikace obsahuje soubor `tests.py`, do kterého můžeme vkládat testy.
+Testovací soubor lze rodělit do více souborů, každý z těchto souborů začíná `test*`.
+
+Testy spouštíme příkazem `python manage.py test` - spúustí všechny testy.
+
+Lze spustit testy v jednom zadaném souboru příkazem
+`python manage.py test viewer.tests`.
+
+Běžné testy se provádějí na virtuální databázi, která má stejné schéma, jako naše
+definovanná databáze v `models.py`, ale je prázdná a nezávislá na skutečné databázi.
+
+V případě, že máme hodně testovacích souborů, lze je vložit do složky s názvem
+začínající na `test*`. V tomto případě je potřeba do této složky přidat 
+soubor `__init__.py`, aby složka fungovala jako package.
+
+### Testování GUI
+Pro testování GUI potřebujeme nainstalovat `selenium` (pro práci s webovou stránkou):
+`pip install selenium`.
+
+Během testování musí být spuštěný server.
+
+> [!WARNING]
+> Zde již pracujeme s reálnou databází a tedy i s reálnými daty.

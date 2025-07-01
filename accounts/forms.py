@@ -1,4 +1,7 @@
+from datetime import date
+
 from django.contrib.auth.forms import UserCreationForm
+from django.core.exceptions import ValidationError
 from django.db.transaction import atomic
 from django.forms import DateField, NumberInput, CharField, Textarea
 
@@ -36,6 +39,12 @@ class SignUpForm(UserCreationForm):
         label='Telefon',
         required=False
     )
+
+    def clean_date_of_birth(self):
+        initial = self.cleaned_data['date_of_birth']
+        if initial and initial > date.today():
+            raise ValidationError('Datum narození nesmí být v budoucnosti.')
+        return initial
 
     @atomic
     def save(self, commit=True):

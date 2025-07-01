@@ -97,6 +97,7 @@ class Movie(Model):
             hours = self.length // 60
             minutes = self.length % 60
             return f"{hours}:{minutes:02}"
+            #return f"{hours}h {minutes}min"
         return None
 
 
