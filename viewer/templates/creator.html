@@ -10,9 +10,11 @@
     <div class="creator-images">
         {% for image in creator.images.all %}
             <span class="creator-image">
-                <img src="{{ image.image.url }}"
-                     alt="{{ image.description }}"
-                     width="150px">
+                <a href="{% url 'image' image.id %}">
+                    <img src="{{ image.image.url }}"
+                         alt="{{ image.description }}"
+                        width="150px">
+                </a>
             </span>
         {% endfor %}
     </div>

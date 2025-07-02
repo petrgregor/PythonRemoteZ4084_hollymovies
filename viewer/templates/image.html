@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Obrázek
+{% endblock %}
+
+{% block content %}
+    <img src="{{ image.image.url }}"
+         alt="{{ image.description }}"
+         width="300px">
+    <br>
+    {{ image.description }}
+    <br>
+    {% if image.movie  %}
+        Film: <a href="{% url 'movie' image.movie.id %}">{{ image.movie }}</a>
+    {% endif %}
+    <br>
+    {% if image.creators %}
+        Tvůrci:
+        <ul>
+        {% for creator in image.creators.all %}
+            <li><a href="{% url 'creator' creator.id %}">{{ creator }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <a href="{% url 'image_update' image.id %}" class="btn btn-primary">Aktualizovat</a>
+    <a href="{% url 'image_delete' image.id %}" class="btn btn-danger">Smazat</a>
+{% endblock %}

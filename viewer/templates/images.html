@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Seznam obrázků
+{% endblock %}
+
+{% block content %}
+    <h1>Seznam obrázků</h1>
+    <a href="{% url 'image_create' %}" class="btn btn-primary">Přidat obrázek</a>
+    <ul>
+        {% for image in images %}
+            <li>
+                <a href="{% url 'image' image.id %}">
+                    <img src="{{ image.image.url }}"
+                         alt="{{ image.description }}"
+                        width="30px">
+                    {{ image.description }}
+                </a>
+                {% if image.movie  %}
+                    Film: <a href="{% url 'movie' image.movie.id %}">{{ image.movie }}</a>
+                {% endif %}
+                {% if image.creators %}
+                    Tvůrci:
+                    {% for creator in image.creators.all %}
+                        <a href="{% url 'creator' creator.id %}">{{ creator }}</a>
+                    {% endfor %}
+                {% endif %}
+                <a href="{% url 'image_update' image.id %}">✏️</a>
+                <a href="{% url 'image_delete' image.id %}">❌</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

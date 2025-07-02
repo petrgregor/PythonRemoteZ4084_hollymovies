@@ -11,9 +11,11 @@
     <div class="movie-images">
         {% for image in movie.images.all %}
             <span class="movie-image">
-                <img src="{{ image.image.url }}"
-                     alt="{{ image.description }}"
-                     width="150px">
+                <a href="{% url 'image' image.id %}">
+                    <img src="{{ image.image.url }}"
+                         alt="{{ image.description }}"
+                         width="150px">
+                </a>
             </span>
         {% endfor %}
     </div>

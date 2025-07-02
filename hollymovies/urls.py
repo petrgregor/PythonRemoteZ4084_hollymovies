@@ -49,7 +49,11 @@ urlpatterns = [
     path('genre/create/', GenreFormView.as_view(), name='genre_create'),
     path('genre/update/<int:pk>/', GenreUpdateView.as_view(), name='genre_update'),
     path('genre/delete/<int:pk>/', GenreDeleteView.as_view(), name='genre_delete'),
+    path('images/', ImageListView.as_view(), name='images'),
+    path('image/<int:pk>/', ImageDetailView.as_view(), name='image'),
     path('image/create/', ImageCreateView.as_view(), name='image_create'),
+    path('image/update/<int:pk>/', ImageUpdateView.as_view(), name='image_update'),
+    path('image/delete/<int:pk>/', ImageDeleteView.as_view(), name='image_delete'),
     path('review/delete/<int:pk>/', ReviewDeleteView.as_view(), name='review_delete'),
 
     path('accounts/login/', LoginView.as_view(template_name='form.html'), name='login'),

@@ -11,7 +11,7 @@ from accounts.models import Profile
 from viewer.forms import GenreForm, MovieModelForm, CountryModelForm, \
     CreatorModelForm, GenreModelForm, ImageModelForm, ReviewModelForm
 from viewer.mixins import StaffRequiredMixin
-from viewer.models import Movie, Creator, Country, Genre, Review
+from viewer.models import Movie, Creator, Country, Genre, Review, Image
 
 
 @login_required
@@ -253,11 +253,39 @@ class GenreDeleteView(StaffRequiredMixin, DeleteView):
     success_url = reverse_lazy('genres')
 
 
+class ImageListView(PermissionRequiredMixin, ListView):
+    template_name = 'images.html'
+    model = Image
+    context_object_name = 'images'
+    permission_required = 'viewer.view_images'
+
+
+class ImageDetailView(DetailView):
+    template_name = 'image.html'
+    model = Image
+    context_object_name = 'image'
+
+
 class ImageCreateView(PermissionRequiredMixin, CreateView):
     template_name = 'form_image.html'
     form_class = ImageModelForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('images')
     permission_required = 'viewer.add_image'
+
+
+class ImageUpdateView(PermissionRequiredMixin, UpdateView):
+    template_name = 'form_image.html'
+    form_class = ImageModelForm
+    model = Image
+    success_url = reverse_lazy('images')
+    permission_required = 'viewer.change_image'
+
+
+class ImageDeleteView(PermissionRequiredMixin, DeleteView):
+    template_name = 'confirm_delete.html'
+    model = Image
+    success_url = reverse_lazy('images')
+    permission_required = 'viewer.delete_iamge'
 
 
 class ReviewDeleteView(DeleteView):
