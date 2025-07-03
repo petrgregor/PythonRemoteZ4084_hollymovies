@@ -16,8 +16,17 @@
                     <a class="nav-item nav-link active" href="{% url 'countries' %}">Země</a>
                     <a class="nav-item nav-link active" href="{% url 'genres' %}">Žánry</a>
                     <a class="nav-item nav-link active" href="{% url 'images' %}">Obrázky</a>
-                    <a class="nav-item nav-link active" href="{% url 'nameday' %}">Svátek</a>
                 {% endif %}
+            </div>
+
+            <div class="navbar-nav">
+                <div class="nav-item dropdown">
+                    <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown">API</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'nameday' %}">Svátek</a>
+                        <a class="dropdown-item" href="{% url 'api_movies' %}">Filmy</a>
+                    </div>
+                </div>
             </div>
 
             <div class="navbar-nav ml-auto">

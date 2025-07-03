@@ -112,8 +112,12 @@
   - mazání obrázku
 
 ### Čtvrtek, 3. července · 17:30–21:30
-Plán: 
 - API
+  - Svátky
+  - Google vyhledávání na ČSFD.cz
+  - Vlastní API:
+    - Seznam filmů (Create) 
+    - Detail filmu (Update, Delete)
 
 ## Django
 ### Instalace
@@ -524,3 +528,22 @@ Během testování musí být spuštěný server.
 
 > [!WARNING]
 > Zde již pracujeme s reálnou databází a tedy i s reálnými daty.
+ 
+## API
+Potřebujeme si nainstalovat Django REST framework `pip install djangorestframework`.
+
+Přidáme `'rest_framework',` do `INSTALLED_APPS` v souboru `settings.py`.
+
+Musíme definovat serializer pro převod objektu do JSON formátu 
+(viz `api.serializers.py`)
+
+Dále definujeme `views` a `urls`.
+
+Oprávnění můžeme definovat v souboru `settings.py` následovně:
+```python
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+```

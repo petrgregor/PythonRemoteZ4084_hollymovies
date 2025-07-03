@@ -20,6 +20,7 @@ from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.urls import path, include
 
 from accounts.views import user_logout, SignUpView
+from api.views import Movies, MovieDetail
 from hollymovies import settings
 from viewer.views import *
 
@@ -67,4 +68,7 @@ urlpatterns = [
 
     path('nameday/', name_day, name='nameday'),
     path('search/', search, name='search'),
+
+    path('api/movies/', Movies.as_view(), name='api_movies'),
+    path('api/movie/<int:pk>/', MovieDetail.as_view(), name='api_movie'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
