@@ -79,4 +79,15 @@
         {% endfor %}
     </ul>
 
+    <hr>
+    <h1>Výsledky vyhledávání na <a href="www.csfd.cz">ČSFD.cz</a></h1>
+    <ul>
+        {% for g_result in g_json.items %}
+            <li>
+                <a href="{{ g_result.link }}">{{ g_result.title }}</a><br>
+                    {{ g_result.snippet }}
+            </li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}

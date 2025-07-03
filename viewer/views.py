@@ -1,3 +1,5 @@
+import os
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, \
     PermissionRequiredMixin
@@ -322,6 +324,22 @@ def search(request):
             movie_genre = Movie.objects.filter(genres__name__contains=search_string)
             movie_country = Movie.objects.filter(countries__name__contains=search_string)
 
+            # Google search API
+            url = (f"https://www.googleapis.com/customsearch/v1"
+                   f"?key={os.getenv('GOOGLE_API_KEY')}"
+                   f"&cx={os.getenv('GOOGLE_CX')}"
+                   f"&q={search_string}")
+            g_request = requests.get(url)
+            print(f"g_request: {g_request}")
+            g_json = g_request.json()
+            #print(f"g_json: {g_json}")
+            for g_result in g_json['items']:
+                #print(f"g_result: {g_result}")
+                print(g_result['title'])
+                print(f"\t{g_result['link']}")
+                print(f"\t{g_result['displayLink']}")
+                print(f"\t{g_result['snippet']}")
+
             context = {
                 'search': search_string,
                 'movie_title_orig': movies_title_orig,
@@ -331,7 +349,8 @@ def search(request):
                 'creator_artistic_name': creator_artistic_name,
                 'creator_surname': creator_surname,
                 'movie_genre': movie_genre,
-                'movie_country': movie_country
+                'movie_country': movie_country,
+                'g_json': g_json
             }
 
             return render(request, 'search.html', context)
