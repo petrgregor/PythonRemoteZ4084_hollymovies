@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, \
     PermissionRequiredMixin
+import requests
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import View
@@ -292,3 +293,15 @@ class ReviewDeleteView(DeleteView):
     template_name = 'confirm_delete.html'
     model = Review
     success_url = reverse_lazy('movies')
+
+
+def name_day(request):
+    url = "https://svatky.adresa.info/json?lang=cs"
+    #print(f"url: {url}")
+    result_request = requests.get(url)
+    #print(f"result_request: {result_request}")
+    result_json = result_request.json()
+    #print(f"result_json: {result_json}")
+    name = result_json[0]['name']
+    context = {'name': name}
+    return render(request, 'nameday.html', context)

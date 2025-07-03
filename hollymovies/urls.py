@@ -64,4 +64,6 @@ urlpatterns = [
     # ostatní defaultní cesty
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', SignUpView.as_view(), name='signup'),
+
+    path('nameday/', name_day, name='nameday'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
