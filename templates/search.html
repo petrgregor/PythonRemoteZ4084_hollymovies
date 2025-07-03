@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Vyhledávání '{{ search }}'
+{% endblock %}
+
+{% block content %}
+    <h1>Výsledky vyhledávání dozatu '{{ search }}'</h1>
+
+    <h2>Výsledky pro originální název filmu</h2>
+    <ul>
+        {% for movie in movie_title_orig %}
+            <li><a href="{% url 'movie' movie.id %}">{{ movie }}</a></li>
+        {% empty %}
+            Nenalezen žádný záznam.
+        {% endfor %}
+    </ul>
+
+    <h2>Výsledky pro český název filmu</h2>
+    <ul>
+        {% for movie in movie_title_cz %}
+            <li><a href="{% url 'movie' movie.id %}">{{ movie }}</a></li>
+        {% empty %}
+            Nenalezen žádný záznam.
+        {% endfor %}
+    </ul>
+
+    <h2>Výsledky pro popis filmu</h2>
+    <ul>
+        {% for movie in movie_description %}
+            <li><a href="{% url 'movie' movie.id %}">{{ movie }}</a></li>
+        {% empty %}
+            Nenalezen žádný záznam.
+        {% endfor %}
+    </ul>
+
+    <h2>Výsledky pro žánr filmu</h2>
+    <ul>
+        {% for movie in movie_genre %}
+            <li><a href="{% url 'movie' movie.id %}">{{ movie }}</a></li>
+        {% empty %}
+            Nenalezen žádný záznam.
+        {% endfor %}
+    </ul>
+
+    <h2>Výsledky pro zemi filmu</h2>
+    <ul>
+        {% for movie in movie_country %}
+            <li><a href="{% url 'movie' movie.id %}">{{ movie }}</a></li>
+        {% empty %}
+            Nenalezen žádný záznam.
+        {% endfor %}
+    </ul>
+
+    <h2>Výsledky pro jméno tvůrce</h2>
+    <ul>
+        {% for creator in creator_name %}
+            <li><a href="{% url 'creator' creator.id %}">{{ creator }}</a></li>
+        {% empty %}
+            Nenalezen žádný záznam.
+        {% endfor %}
+    </ul>
+
+    <h2>Výsledky pro umělecké jméno tvůrce</h2>
+    <ul>
+        {% for creator in creator_artistic_name %}
+            <li><a href="{% url 'creator' creator.id %}">{{ creator }}</a></li>
+        {% empty %}
+            Nenalezen žádný záznam.
+        {% endfor %}
+    </ul>
+
+    <h2>Výsledky pro příjmení tvůrce</h2>
+    <ul>
+        {% for creator in creator_surname %}
+            <li><a href="{% url 'creator' creator.id %}">{{ creator }}</a></li>
+        {% empty %}
+            Nenalezen žádný záznam.
+        {% endfor %}
+    </ul>
+
+{% endblock %}

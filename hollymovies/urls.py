@@ -66,4 +66,5 @@ urlpatterns = [
     path('accounts/signup/', SignUpView.as_view(), name='signup'),
 
     path('nameday/', name_day, name='nameday'),
+    path('search/', search, name='search'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

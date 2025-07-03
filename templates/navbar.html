@@ -20,6 +20,15 @@
                 {% endif %}
             </div>
 
+            <div class="navbar-nav ml-auto">
+                <div class="search-div">
+                    <form method="post" action="/search/">
+                        {% csrf_token %}
+                        <input type="text" id="search" name="search" placeholder="🔎 Hledej...">
+                    </form>
+                </div>
+            </div>
+
             <div class="navbar-nav ml-auto text-white">
                 <div class="nav-item dropdown">
                     {% if user.is_authenticated %}

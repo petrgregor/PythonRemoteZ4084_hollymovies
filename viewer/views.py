@@ -305,3 +305,34 @@ def name_day(request):
     name = result_json[0]['name']
     context = {'name': name}
     return render(request, 'nameday.html', context)
+
+
+def search(request):
+    if request.method == 'POST':
+        search_string = request.POST.get('search').strip()
+        if search_string:
+            movies_title_orig = Movie.objects.filter(title_orig__contains=search_string)
+            movies_title_cz = Movie.objects.filter(title_cz__contains=search_string)
+            movies_description = Movie.objects.filter(description__contains=search_string)
+
+            creator_name = Creator.objects.filter(name__contains=search_string)
+            creator_artistic_name = Creator.objects.filter(artistic_name__contains=search_string)
+            creator_surname = Creator.objects.filter(surname__contains=search_string)
+
+            movie_genre = Movie.objects.filter(genres__name__contains=search_string)
+            movie_country = Movie.objects.filter(countries__name__contains=search_string)
+
+            context = {
+                'search': search_string,
+                'movie_title_orig': movies_title_orig,
+                'movie_title_cz': movies_title_cz,
+                'movie_description': movies_description,
+                'creator_name': creator_name,
+                'creator_artistic_name': creator_artistic_name,
+                'creator_surname': creator_surname,
+                'movie_genre': movie_genre,
+                'movie_country': movie_country
+            }
+
+            return render(request, 'search.html', context)
+    return render(request, 'home.html')
