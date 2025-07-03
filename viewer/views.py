@@ -355,3 +355,29 @@ def search(request):
 
             return render(request, 'search.html', context)
     return render(request, 'home.html')
+
+
+def movie_filter(request):
+    if request.method == 'POST':
+        filter_genre = request.POST.get('filter-genre').strip()
+        filter_country = request.POST.get('filter-country').strip()
+        filter_actor = request.POST.get('filter-actor').strip()
+        filter_year_from = request.POST.get('filter-year-from').strip()
+        filter_year_to = request.POST.get('filter-year-to').strip()
+
+        filtered_movies = Movie.objects.all()
+
+        if filter_genre:
+            filtered_movies = filtered_movies.filter(genres__name__contains=filter_genre)
+        if filter_country:
+            filtered_movies = filtered_movies.filter(countries__name__contains=filter_country)
+        if filter_actor:
+            filtered_movies = filtered_movies.filter(actors__surname__contains=filter_actor)
+        if filter_year_from:
+            filtered_movies = filtered_movies.filter(year__gte=filter_year_from)
+        if filter_year_to:
+            filtered_movies = filtered_movies.filter(year__lte=filter_year_to)
+
+        context = {'movies': filtered_movies}
+        return render(request, 'movies.html', context)
+    return render(request, 'home.html')

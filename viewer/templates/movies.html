@@ -5,6 +5,43 @@
 {% endblock %}
 
 {% block content %}
+
+    <div class="filter-form">
+        <form method="post" action="/movie/filter/" class="form-row align-items-center">
+            {% csrf_token %}
+
+            <div class="col-auto col-sm-1">
+                <input type="text" id="filter-genre" name="filter-genre"
+                       class="form-control form-control-sm" placeholder="Žánr">
+            </div>
+
+            <div class="col-auto col-sm-1">
+                <input type="text" id="filter-country" name="filter-country"
+                       class="form-control form-control-sm" placeholder="Země">
+            </div>
+
+            <div class="col-auto col-sm-1">
+                <input type="text" id="filter-actor" name="filter-actor"
+                       class="form-control form-control-sm" placeholder="Herec">
+            </div>
+
+            <div class="col-auto col-sm-1">
+                <input type="text" id="filter-year-from" name="filter-year-from"
+                       class="form-control form-control-sm" placeholder="Rok od">
+            </div>
+
+            <div class="col-auto col-sm-1">
+                <input type="text" id="filter-year-to" name="filter-year-to"
+                       class="form-control form-control-sm" placeholder="do">
+            </div>
+
+            <div class="col-auto">
+                <input type="submit" id="id_submit" value="Filtr"
+                       class="btn btn-primary btn-sm">
+            </div>
+        </form>
+    </div>
+
     <h1>Seznam filmů</h1>
     {% if perms.viewer.add_movie %}
         <a href="{% url 'movie_create' %}" class="btn btn-primary">Přidat film</a>

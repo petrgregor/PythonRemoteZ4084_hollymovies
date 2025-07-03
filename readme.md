@@ -102,7 +102,7 @@
   - Testování formulářů (`test_forms.py`) 
 
 ### Úterý, 1. července · 17:30–21:00
-- Test GUI
+- Test GUI (`test_gui.py`)
 - Feature 2.1 - hodnocení filmu
 - Feature 5.1 - obrázky u tvůrců
 - Domácí úkol
@@ -118,6 +118,7 @@
   - Vlastní API:
     - Seznam filmů (Create) 
     - Detail filmu (Update, Delete)
+- Feature 3 - filtrování filmů (žánr, země, herec, rok)
 
 ## Django
 ### Instalace
@@ -235,10 +236,11 @@ python manage.py createsuperuser
   - [ ] trailer
   - [ ] kde se odehrává film
 - [ ] 3 filtrování filmů
-  - [ ] podle žánru 
-  - [ ] podle roku
+  - [x] podle žánru 
+  - [x] podle země
+  - [x] podle roku
   - [ ] podle hodnocení
-  - [ ] podle herce
+  - [x] podle herce
 - [x] 4 seznam herců
 - [x] 5 detail tvůrce
   - [x] jméno
